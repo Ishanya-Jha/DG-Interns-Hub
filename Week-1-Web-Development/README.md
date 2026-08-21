@@ -104,14 +104,14 @@ A basic task management application created to practice JavaScript, user input, 
     DG-Interns-Hub/
     └── Week-1-Web-Development/
         ├── README.md
-        ├── index.html
-        ├── style.css
+        ├── Portflio.html
+        ├── portfolio.css
         │
         ├── images/
         │   └── profile.jpg
         │
         ├── Calculator/
-        │   ├── index.html
+        │   ├── Calculator-index.html
         │   ├── script.js
         │   └── style.css
         │
