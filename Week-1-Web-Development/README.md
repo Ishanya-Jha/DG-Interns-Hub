@@ -1,4 +1,4 @@
-# 🚀 DG Interns Hub - Web Development Internship
+#  DG Interns Hub - Web Development Internship
 
 My work completed during **Week 1 of the Web Development Internship at DG Interns Hub**.
 
