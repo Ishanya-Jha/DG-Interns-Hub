@@ -46,13 +46,14 @@
     </p>
 
     </section>
-    <!--About Section-->
-    <section id="about">
+  <!--About Section-->
+  <section id="about">
 
     <h2>About Me</h2>
 
     <p>
-        I am an MCA student with an interest in technology and software development.
+        I am an MCA student with an interest in
+        <em>technology and software development</em>. <!--Use of em-->
         I am currently building my skills in web development and cybersecurity.
     </p>
 
@@ -65,6 +66,15 @@
         My goal is to build strong technical skills and gain practical
         experience that will help me pursue a career in the technology field.
     </p>
+
+    <p>My current learning priorities are:</p>
+
+    <!--Use of ordered list-->
+    <ol>
+        <li>Web Development</li> 
+        <li>Cybersecurity</li>
+        <li>Programming and Problem Solving</li>
+    </ol>
 
     </section>
     <!--Skills Section-->
@@ -81,6 +91,7 @@
         <li>C++</li>
         <li>Git &amp; GitHub</li> <!-- &amp; identifes & char -> Git & GitHub -->
     </ul>
+    </section>
     <!--Education Section-->
     <section id="education">
 
@@ -233,16 +244,26 @@
     <!--Contact Section-->
     <section id="contact">
 
+<!--Contact Section-->
+<section id="contact">
+
     <h2>Contact Me</h2>
-    <!--Use of HTML Forms-->
+
+    <p>
+        Interested in collaborating, discussing a project, or connecting professionally?
+        Feel free to get in touch.
+    </p>
+
     <form>
+
+        <!--Basic Contact Information-->
 
         <label for="name">Full Name:</label>
         <input
             type="text"
             id="name"
             name="name"
-            placeholder="Enter your full name" 
+            placeholder="Enter your full name"
         >
 
         <br><br>
@@ -288,12 +309,86 @@
 
         <br><br>
 
+        <!--Project Inquiry-->
+
+        <h3>Project Inquiry</h3>
+
+        <label for="inquiry">Reason for Contact:</label>
+        <select id="inquiry" name="inquiry">
+            <option value="">Select an option</option>
+            <option value="project">Project Collaboration</option>
+            <option value="internship">Internship Opportunity</option>
+            <option value="technical">Technical Discussion</option>
+            <option value="networking">Professional Networking</option>
+            <option value="other">Other</option>
+        </select>
+
+        <br><br>
+
+        <p>Topics I can discuss:</p>
+
+        <input
+            type="checkbox"
+            id="web-development"
+            name="topic"
+            value="web-development"
+        >
+        <label for="web-development">Web Development</label>
+
+        <input
+            type="checkbox"
+            id="cybersecurity"
+            name="topic"
+            value="cybersecurity"
+        >
+        <label for="cybersecurity">Cybersecurity</label>
+
+        <input
+            type="checkbox"
+            id="programming"
+            name="topic"
+            value="programming"
+        >
+        <label for="programming">Programming</label>
+
+        <br><br>
+
+        <p>Preferred Response Method:</p>
+
+        <input
+            type="radio"
+            id="response-email"
+            name="response-method"
+            value="email"
+        >
+        <label for="response-email">Email</label>
+
+        <input
+            type="radio"
+            id="response-phone"
+            name="response-method"
+            value="phone"
+        >
+        <label for="response-phone">Phone</label>
+
+        <br><br>
+
+        <!--Password input demonstrates the required HTML password field.-->
+        <label for="password">Password:</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+        >
+
+        <br><br>
+
         <button type="submit">Submit</button>
 
     </form>
 
-    </section>
-
+</section>
 </main>
 <!-- Footer -->
 <footer>
