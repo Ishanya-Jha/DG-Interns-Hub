@@ -6,7 +6,13 @@ window.addEventListener("load", function () {
     console.log("Portfolio website loaded successfully.");
 });
 
+const welcomeButton = document.getElementById("welcomeButton");
 
+if (welcomeButton) {
+    welcomeButton.addEventListener("click", function () {
+        alert("Welcome to Ishanya Jha's Portfolio!");
+    });
+}
 // =========================
 // CONTACT FORM VALIDATION
 // =========================
