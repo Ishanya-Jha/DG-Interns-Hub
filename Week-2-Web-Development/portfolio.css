@@ -1,404 +1,570 @@
 /* =========================================================
-   WEEK 2 - PERSONAL PORTFOLIO WEBSITE
-   Technologies: HTML5 + CSS3 + JavaScript
+   ISHANYA JHA - MODERN PORTFOLIO
+   Week 2 Web Development Internship
+
+   Technologies:
+   HTML5
+   CSS3
+   JavaScript
+
    Color Palette:
-   #435146 - Primary Green
-   #4A6958 - Secondary Green
-   #1B2922 - Dark Green
-   #1C1C1C - Dark Text
+   #435146
+   #4A6958
+   #1B2922
+   #1C1C1C
 ========================================================= */
 
 
 /* =========================================================
-   1. GLOBAL STYLES
+   1. ROOT VARIABLES
 ========================================================= */
 
-/* Remove default browser spacing and enable smooth scrolling */
-body{
-background-color: red ! important;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-
-/* Store the website colors as CSS variables */
 :root {
-    --primary: #435146;
-    --secondary: #4A6958;
+
     --dark: #1B2922;
+
+    --dark-soft: #24352C;
+
+    --primary: #435146;
+
+    --accent: #4A6958;
+
     --text: #1C1C1C;
 
-    --background: #F4F5F2;
+    --muted: #66736B;
+
+    --light: #F3F6F3;
+
     --white: #FFFFFF;
 
-    --border: #D9DED9;
-    --light-green: #E8EDE9;
+    --border: rgba(67, 81, 70, 0.15);
+
+    --shadow:
+        0 20px 50px rgba(27, 41, 34, 0.10);
+
+    --radius: 18px;
+
 }
 
 
-/* Main body styling */
-body {
-    font-family: Arial, Helvetica, sans-serif;
+/* =========================================================
+   2. GLOBAL RESET
+========================================================= */
 
-    background-color: var(--background);
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
+
+}
+
+
+html {
+
+    scroll-padding-top: 90px;
+
+}
+
+
+body {
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--light);
 
     color: var(--text);
 
     line-height: 1.7;
+
+    overflow-x: hidden;
+
 }
 
 
 /* =========================================================
-   2. HEADER
+   3. CUSTOM SCROLLBAR
 ========================================================= */
 
-/* Main header area */
+::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: var(--light);
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--accent);
+
+    border-radius: 20px;
+
+}
+
+
+/* =========================================================
+   4. HEADER / NAVIGATION
+========================================================= */
+
 header {
-    background-color: var(--dark);
 
-    color: var(--white);
-
-    padding: 20px 6%;
-
-    /* Keeps navigation visible while scrolling */
     position: sticky;
-    top: 0;
+
+    top: 15px;
 
     z-index: 1000;
 
-    /* Small shadow below the header */
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+    width: 94%;
 
-    /* Places name and navigation horizontally */
+    max-width: 1400px;
+
+    margin: 15px auto 0;
+
+    padding: 14px 22px;
+
+    background:
+        rgba(27, 41, 34, 0.92);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+
     display: flex;
 
     align-items: center;
 
     justify-content: space-between;
 
-    gap: 30px;
+    gap: 25px;
+
 }
 
 
-/* Name in header */
 header h1 {
-    font-size: 1.5rem;
+
+    color: var(--white);
+
+    font-size: 1.25rem;
 
     letter-spacing: 0.5px;
 
     white-space: nowrap;
+
 }
 
 
-/* Internship subtitle */
 header p {
+
     display: none;
+
 }
 
 
 /* =========================================================
-   3. NAVIGATION
+   5. NAVIGATION LINKS
 ========================================================= */
 
 nav {
+
     display: flex;
 
     align-items: center;
 
-    justify-content: flex-end;
+    gap: 5px;
 
     flex-wrap: wrap;
 
-    gap: 6px;
 }
 
 
-/* Navigation links */
 nav a {
-    color: #E8EDE9;
+
+    position: relative;
+
+    color: #DCE5DF;
 
     text-decoration: none;
 
-    padding: 8px 14px;
+    padding: 9px 14px;
 
-    border-radius: 6px;
+    border-radius: 9px;
 
     font-size: 14px;
 
-    font-weight: 500;
-
-    /* Smooth hover animation */
     transition:
-        background-color 0.3s ease,
         color 0.3s ease,
+        background 0.3s ease,
         transform 0.3s ease;
+
 }
 
 
-/* Navigation hover effect */
 nav a:hover {
-    background-color: var(--secondary);
 
     color: var(--white);
 
-    transform: translateY(-2px);
+    background:
+        rgba(74, 105, 88, 0.75);
+
+    transform:
+        translateY(-2px);
+
 }
 
 
 /* =========================================================
-   4. MAIN CONTENT
+   6. MAIN
 ========================================================= */
 
-/* Main container uses the full browser width */
 main {
+
     width: 100%;
 
-    margin: 0;
 }
 
 
 /* =========================================================
-   5. GENERAL SECTIONS
-========================================================= */
-
-section {
-    width: 100%;
-
-    padding: 80px 8%;
-
-    margin: 0;
-
-    background-color: var(--white);
-
-    border-bottom: 1px solid #E6E9E6;
-
-    /* Entrance animation */
-    animation: fadeUp 0.7s ease both;
-}
-
-
-/* Section headings */
-section h2 {
-    max-width: 1100px;
-
-    margin: 0 auto 25px;
-
-    color: var(--dark);
-
-    font-size: 2rem;
-
-    font-weight: 700;
-}
-
-
-/* Decorative line below headings */
-section h2::after {
-    content: "";
-
-    display: block;
-
-    width: 45px;
-
-    height: 3px;
-
-    margin-top: 9px;
-
-    background-color: var(--secondary);
-
-    border-radius: 5px;
-}
-
-
-/* Keep paragraphs readable on large screens */
-section p {
-    max-width: 1100px;
-
-    margin-left: auto;
-
-    margin-right: auto;
-
-    margin-bottom: 12px;
-}
-
-
-/* =========================================================
-   6. HOME / HERO SECTION
+   7. HERO SECTION
 ========================================================= */
 
 #home {
-    min-height: 75vh;
 
-    /* Center hero content */
+    position: relative;
+
+    min-height: 88vh;
+
+    padding:
+        110px 8%;
+
     display: flex;
 
     flex-direction: column;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 
     text-align: center;
 
-    padding: 90px 8%;
+    overflow: hidden;
 
-    /* Soft green gradient */
     background:
-        linear-gradient(
-            135deg,
-            #E8EDE9 0%,
-            #F4F5F2 50%,
-            #FFFFFF 100%
-        );
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(74, 105, 88, 0.30),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(67, 81, 70, 0.22),
+            transparent 35%
+        ),
+
+        var(--dark);
+
+    color: var(--white);
+
 }
 
 
-/* Main hero heading */
-#home h2 {
-    font-size: clamp(2.2rem, 5vw, 4rem);
+/* Decorative animated circle */
 
-    color: var(--dark);
+#home::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    top: -100px;
+
+    right: -80px;
+
+    animation:
+        float 8s ease-in-out infinite;
+
+}
+
+
+#home::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+
+    height: 250px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    bottom: -100px;
+
+    left: -50px;
+
+    animation:
+        float 7s ease-in-out infinite reverse;
+
+}
+
+
+/* Hero content stays above decorations */
+
+#home > * {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   8. HERO TYPOGRAPHY
+========================================================= */
+
+#home h2 {
+
+    max-width: 900px;
 
     margin-bottom: 10px;
+
+    font-size:
+        clamp(2.5rem, 7vw, 5.5rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    color: var(--white);
+
 }
 
 
-/* Name below hero heading */
+/* Highlight name */
+
 #home h3 {
-    font-size: 1.4rem;
 
-    color: var(--secondary);
+    margin-bottom: 25px;
 
-    margin-bottom: 20px;
+    font-size: 1.35rem;
+
+    font-weight: 500;
+
+    color:
+        #AFC1B5;
+
 }
 
 
-/* Profile image */
-#home img {
-    width: 170px;
+/* Hero paragraph */
 
-    height: 170px;
+#home p {
+
+    max-width: 720px;
+
+    margin:
+        0 auto 12px;
+
+    color:
+        #C9D5CD;
+
+    font-size: 1.05rem;
+
+}
+
+
+/* =========================================================
+   9. PROFILE IMAGE
+========================================================= */
+
+#home img {
+
+    width: 180px;
+
+    height: 180px;
 
     object-fit: cover;
 
     border-radius: 50%;
 
-    border: 5px solid var(--white);
+    margin:
+        20px 0 28px;
 
-    margin: 20px 0 25px;
+    border:
+        5px solid rgba(255,255,255,0.12);
 
-    /* Image shadow */
+    outline:
+        2px solid rgba(74,105,88,0.8);
+
     box-shadow:
-        0 8px 25px rgba(27, 41, 34, 0.18);
 
-    /* Image hover animation */
-    transition: transform 0.4s ease;
+        0 0 0 12px
+        rgba(74,105,88,0.10),
+
+        0 25px 60px
+        rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.5s ease;
+
 }
 
 
-/* Profile image hover effect */
 #home img:hover {
-    transform: scale(1.06);
-}
 
+    transform:
+        scale(1.07)
+        rotate(2deg);
 
-/* Hero paragraph width */
-#home p {
-    max-width: 700px;
-
-    color: #4B5563;
-
-    margin-bottom: 12px;
 }
 
 
 /* =========================================================
-   7. BUTTON
+   10. GENERAL SECTIONS
 ========================================================= */
 
-button {
-    background-color: var(--primary);
+section:not(#home) {
 
-    color: var(--white);
+    padding:
+        100px 8%;
 
-    border: none;
+}
 
-    padding: 13px 30px;
 
-    border-radius: 7px;
+section h2 {
 
-    font-size: 15px;
+    max-width: 1100px;
 
-    cursor: pointer;
+    margin:
+        0 auto 35px;
+
+    color: var(--dark);
+
+    font-size:
+        clamp(2rem, 4vw, 3rem);
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+section h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 55px;
+
+    height: 4px;
 
     margin-top: 12px;
 
-    /* Smooth button animation */
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    background:
+        var(--accent);
+
+    border-radius: 10px;
+
 }
 
 
-/* Button hover effect */
-button:hover {
-    background-color: var(--secondary);
+section p {
 
-    transform: translateY(-3px);
+    max-width: 1100px;
 
-    box-shadow:
-        0 8px 18px rgba(67, 81, 70, 0.25);
+    margin:
+        0 auto 15px;
+
 }
 
 
 /* =========================================================
-   8. ABOUT SECTION
+   11. ABOUT
 ========================================================= */
 
 #about {
-    background-color: var(--white);
+
+    background:
+        var(--white);
+
 }
 
 
-/* Ordered list inside About section */
 #about ol {
+
     max-width: 1100px;
 
-    margin-left: auto;
-
-    margin-right: auto;
+    margin:
+        25px auto;
 
     padding-left: 25px;
+
 }
 
 
-/* Space between list items */
 #about li {
-    margin-bottom: 8px;
+
+    padding: 6px 0;
+
 }
 
 
 /* =========================================================
-   9. SKILLS SECTION
+   12. SKILLS
 ========================================================= */
 
 #skills {
-    background-color: var(--background);
+
+    background:
+        var(--light);
+
 }
 
 
-/* Skill list becomes a CSS Grid */
 #skills ul {
+
     max-width: 1100px;
 
-    margin-left: auto;
-
-    margin-right: auto;
+    margin:
+        30px auto 0;
 
     padding: 0;
 
@@ -406,175 +572,2128 @@ button:hover {
 
     display: grid;
 
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns:
+        repeat(5, 1fr);
 
-    gap: 15px;
+    gap: 18px;
+
 }
 
 
-/* Individual skill cards */
 #skills li {
-    background-color: var(--white);
 
-    border: 1px solid var(--border);
+    position: relative;
 
-    padding: 18px;
+    padding: 25px 15px;
 
     text-align: center;
 
-    border-radius: 8px;
+    background:
+        rgba(255,255,255,0.85);
 
-    color: var(--dark);
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
 
     font-weight: 600;
 
-    /* Hover animation */
+    color: var(--dark);
+
+    box-shadow:
+        0 8px 25px
+        rgba(27,41,34,0.05);
+
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+
 }
 
 
-/* Skill card hover effect */
 #skills li:hover {
-    transform: translateY(-5px);
 
-    border-color: var(--secondary);
+    transform:
+        translateY(-8px);
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
 
     box-shadow:
-        0 8px 20px rgba(27, 41, 34, 0.1);
+        var(--shadow);
+
 }
 
 
 /* =========================================================
-   10. EDUCATION TABLE
+   13. EDUCATION
 ========================================================= */
 
-/* Allows table to scroll horizontally on small screens */
 #education {
-    overflow-x: auto;
+
+    background:
+        var(--white);
+
+    overflow-x:
+        auto;
+
 }
 
 
-/* Table */
 table {
+
     width: 100%;
 
     max-width: 1100px;
 
-    margin: 20px auto 0;
+    margin:
+        30px auto 0;
 
-    border-collapse: collapse;
+    border-collapse:
+        separate;
+
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border-radius:
+        var(--radius);
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 10px 35px
+        rgba(27,41,34,0.06);
+
 }
 
 
-/* Table cells */
-th,
-td {
-    border: 1px solid var(--border);
-
-    padding: 14px;
-
-    text-align: left;
-}
-
-
-/* Table header */
 th {
-    background-color: var(--dark);
 
-    color: var(--white);
+    padding:
+        18px;
+
+    text-align:
+        left;
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
+
 }
 
 
-/* Alternate table row */
+td {
+
+    padding:
+        16px;
+
+    border-top:
+        1px solid var(--border);
+
+}
+
+
 tr:nth-child(even) {
-    background-color: #F7F8F6;
+
+    background:
+        #F6F8F6;
+
 }
 
 
-/* Table hover effect */
+tr {
+
+    transition:
+        background 0.3s ease;
+
+}
+
+
 tr:hover {
-    background-color: var(--light-green);
+
+    background:
+        #E8EDE9;
+
 }
 
 
 /* =========================================================
-   11. PROJECT SECTION
+   14. PROJECTS
 ========================================================= */
 
 #projects {
-    background-color: var(--background);
 
-    display: grid;
+    background:
+        var(--light);
+
+    display:
+        grid;
 
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-    gap: 25px;
+    gap:
+        25px;
 
-    padding-left: 8%;
-
-    padding-right: 8%;
 }
 
 
-/* Project section heading takes full width */
 #projects > h2 {
-    grid-column: 1 / -1;
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+.project-card {
+
+    position:
+        relative;
+
+    background:
+        rgba(255,255,255,0.9);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding:
+        32px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 10px 35px
+        rgba(27,41,34,0.06);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+
+}
+
+
+/* Decorative line on cards */
+
+.project-card::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    top: 0;
+
+    left: 0;
 
     width: 100%;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--accent)
+        );
+
 }
 
 
-/* Individual project card */
-.project-card {
-    max-width: none;
+/* Project hover */
 
-    background-color: var(--white);
+.project-card:hover {
 
-    border: 1px solid var(--border);
+    transform:
+        translateY(-10px);
 
-    border-radius: 12px;
+    box-shadow:
+        0 25px 60px
+        rgba(27,41,34,0.13);
 
-    padding: 30px;
+    border-color:
+        rgba(74,105,88,0.4);
+
+}
+
+
+.project-card h3 {
+
+    margin-bottom:
+        15px;
+
+    color:
+        var(--dark);
+
+    font-size:
+        1.3rem;
+
+}
+
+
+.project-card strong {
+
+    color:
+        var(--accent);
+
+}
+
+
+.project-card a {
+
+    display:
+        inline-block;
+
+    margin-top:
+        15px;
+
+    padding:
+        9px 16px;
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
+
+    border-radius:
+        8px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        14px;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.project-card a:hover {
+
+    background:
+        var(--accent);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   15. CONTACT SECTION
+========================================================= */
+
+#contact {
+
+    background:
+        var(--white);
+
+}
+
+
+form {
+
+    max-width:
+        1100px;
+
+    margin:
+        30px auto 0;
+
+    padding:
+        40px;
+
+    background:
+        var(--light);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+form label {
+
+    color:
+        var(--dark);
+
+    font-weight:
+        600;
+
+}
+
+
+input,
+textarea,
+select {
+
+    width:
+        100%;
+
+    padding:
+        14px 16px;
+
+    margin-top:
+        7px;
+
+    margin-bottom:
+        18px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        9px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--text);
+
+    font-family:
+        inherit;
+
+    font-size:
+        15px;
+
+    outline:
+        none;
+
+    transition:
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(74,105,88,0.12);
+
+}
+
+
+textarea {
+
+    min-height:
+        150px;
+
+    resize:
+        vertical;
+
+}
+
+
+/* Keep radio/checkbox controls normal */
+
+input[type="checkbox"],
+input[type="radio"] {
+
+    width:
+        auto;
+
+    margin:
+        0 6px 0 0;
+
+}
+
+
+/* =========================================================
+   16. BUTTON
+========================================================= */
+
+button {
+
+    border:
+        none;
+
+    padding:
+        13px 28px;
+
+    border-radius:
+        9px;
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+button:hover {
+
+    background:
+        var(--accent);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(27,41,34,0.2);
+
+}
+
+
+/* =========================================================
+   17. FOOTER
+========================================================= */
+
+footer {
+
+    padding:
+        50px 8%;
+
+    background:
+        var(--dark);
+
+    color:
+        #C9D5CD;
+
+    text-align:
+        center;
+
+}
+
+
+footer p {
+
+    margin-bottom:
+        8px;
+
+}
+
+
+footer a {
+
+    color:
+        #DCE5DF;
+
+    text-decoration:
+        none;
+
+    transition:
+        color 0.3s ease;
+
+}
+
+
+footer a:hover {
+
+    color:
+        var(--white);
+
+}
+
+
+/* =========================================================
+   18. FLOATING ANIMATION
+========================================================= */
+
+@keyframes float {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-25px);
+
+    }
+
+}
+
+
+/* =========================================================
+   19. RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    header {
+
+        width:
+            96%;
+
+    }
+
+
+    #skills ul {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+
+    #projects {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   20. RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+
+        position:
+            relative;
+
+        top:
+            0;
+
+        width:
+            100%;
+
+        margin:
+            0;
+
+        border-radius:
+            0;
+
+        flex-direction:
+            column;
+
+        padding:
+            18px 15px;
+
+    }
+
+
+    nav {
+
+        justify-content:
+            center;
+
+    }
+
+
+    nav a {
+
+        padding:
+            7px 9px;
+
+        font-size:
+            13px;
+
+    }
+
+
+    #home {
+
+        min-height:
+            80vh;
+
+        padding:
+            80px 6%;
+
+    }
+
+
+    #home h2 {
+
+        font-size:
+            2.6rem;
+
+        letter-spacing:
+            -1px;
+
+    }
+
+
+    #home img {
+
+        width:
+            150px;
+
+        height:
+            150px;
+
+    }
+
+
+    section:not(#home) {
+
+        padding:
+            70px 6%;
+
+    }
+
+
+    section h2 {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    #skills ul {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    form {
+
+        padding:
+            25px 20px;
+
+    }
+
+
+    table {
+
+        min-width:
+            750px;
+
+    }
+
+}
+
+
+/* =========================================================
+   21. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    #skills ul {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    #home h2 {
+
+        font-size:
+            2.2rem;
+
+    }
+
+
+    nav a {
+
+        font-size:
+            12px;
+
+        padding:
+            6px 8px;
+
+    }
+
+}/* =========================================================
+   ISHANYA JHA - MODERN PORTFOLIO
+   Week 2 Web Development Internship
+
+   Technologies:
+   HTML5
+   CSS3
+   JavaScript
+
+   Color Palette:
+   #435146
+   #4A6958
+   #1B2922
+   #1C1C1C
+========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+========================================================= */
+
+:root {
+
+    --dark: #1B2922;
+
+    --dark-soft: #24352C;
+
+    --primary: #435146;
+
+    --accent: #4A6958;
+
+    --text: #1C1C1C;
+
+    --muted: #66736B;
+
+    --light: #F3F6F3;
+
+    --white: #FFFFFF;
+
+    --border: rgba(67, 81, 70, 0.15);
+
+    --shadow:
+        0 20px 50px rgba(27, 41, 34, 0.10);
+
+    --radius: 18px;
+
+}
+
+
+/* =========================================================
+   2. GLOBAL RESET
+========================================================= */
+
+* {
 
     margin: 0;
 
-    /* Project hover animation */
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
+
 }
 
 
-/* Project card hover */
-.project-card:hover {
-    transform: translateY(-7px);
+html {
 
-    border-color: var(--secondary);
+    scroll-padding-top: 90px;
+
+}
+
+
+body {
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--light);
+
+    color: var(--text);
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================================================
+   3. CUSTOM SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: var(--light);
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--accent);
+
+    border-radius: 20px;
+
+}
+
+
+/* =========================================================
+   4. HEADER / NAVIGATION
+========================================================= */
+
+header {
+
+    position: sticky;
+
+    top: 15px;
+
+    z-index: 1000;
+
+    width: 94%;
+
+    max-width: 1400px;
+
+    margin: 15px auto 0;
+
+    padding: 14px 22px;
+
+    background:
+        rgba(27, 41, 34, 0.92);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
 
     box-shadow:
-        0 12px 28px rgba(27, 41, 34, 0.12);
+        0 15px 40px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
 }
 
 
-/* Project title */
-.project-card h3 {
-    color: var(--dark);
+header h1 {
 
-    margin-bottom: 15px;
+    color: var(--white);
 
     font-size: 1.25rem;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+
 }
 
 
-/* Important project information */
+header p {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   5. NAVIGATION LINKS
+========================================================= */
+
+nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    flex-wrap: wrap;
+
+}
+
+
+nav a {
+
+    position: relative;
+
+    color: #DCE5DF;
+
+    text-decoration: none;
+
+    padding: 9px 14px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+nav a:hover {
+
+    color: var(--white);
+
+    background:
+        rgba(74, 105, 88, 0.75);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   6. MAIN
+========================================================= */
+
+main {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   7. HERO SECTION
+========================================================= */
+
+#home {
+
+    position: relative;
+
+    min-height: 88vh;
+
+    padding:
+        110px 8%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(74, 105, 88, 0.30),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(67, 81, 70, 0.22),
+            transparent 35%
+        ),
+
+        var(--dark);
+
+    color: var(--white);
+
+}
+
+
+/* Decorative animated circle */
+
+#home::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    top: -100px;
+
+    right: -80px;
+
+    animation:
+        float 8s ease-in-out infinite;
+
+}
+
+
+#home::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+
+    height: 250px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    bottom: -100px;
+
+    left: -50px;
+
+    animation:
+        float 7s ease-in-out infinite reverse;
+
+}
+
+
+/* Hero content stays above decorations */
+
+#home > * {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   8. HERO TYPOGRAPHY
+========================================================= */
+
+#home h2 {
+
+    max-width: 900px;
+
+    margin-bottom: 10px;
+
+    font-size:
+        clamp(2.5rem, 7vw, 5.5rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    color: var(--white);
+
+}
+
+
+/* Highlight name */
+
+#home h3 {
+
+    margin-bottom: 25px;
+
+    font-size: 1.35rem;
+
+    font-weight: 500;
+
+    color:
+        #AFC1B5;
+
+}
+
+
+/* Hero paragraph */
+
+#home p {
+
+    max-width: 720px;
+
+    margin:
+        0 auto 12px;
+
+    color:
+        #C9D5CD;
+
+    font-size: 1.05rem;
+
+}
+
+
+/* =========================================================
+   9. PROFILE IMAGE
+========================================================= */
+
+#home img {
+
+    width: 180px;
+
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    margin:
+        20px 0 28px;
+
+    border:
+        5px solid rgba(255,255,255,0.12);
+
+    outline:
+        2px solid rgba(74,105,88,0.8);
+
+    box-shadow:
+
+        0 0 0 12px
+        rgba(74,105,88,0.10),
+
+        0 25px 60px
+        rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.5s ease;
+
+}
+
+
+#home img:hover {
+
+    transform:
+        scale(1.07)
+        rotate(2deg);
+
+}
+
+
+/* =========================================================
+   10. GENERAL SECTIONS
+========================================================= */
+
+section:not(#home) {
+
+    padding:
+        100px 8%;
+
+}
+
+
+section h2 {
+
+    max-width: 1100px;
+
+    margin:
+        0 auto 35px;
+
+    color: var(--dark);
+
+    font-size:
+        clamp(2rem, 4vw, 3rem);
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+section h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 55px;
+
+    height: 4px;
+
+    margin-top: 12px;
+
+    background:
+        var(--accent);
+
+    border-radius: 10px;
+
+}
+
+
+section p {
+
+    max-width: 1100px;
+
+    margin:
+        0 auto 15px;
+
+}
+
+
+/* =========================================================
+   11. ABOUT
+========================================================= */
+
+#about {
+
+    background:
+        var(--white);
+
+}
+
+
+#about ol {
+
+    max-width: 1100px;
+
+    margin:
+        25px auto;
+
+    padding-left: 25px;
+
+}
+
+
+#about li {
+
+    padding: 6px 0;
+
+}
+
+
+/* =========================================================
+   12. SKILLS
+========================================================= */
+
+#skills {
+
+    background:
+        var(--light);
+
+}
+
+
+#skills ul {
+
+    max-width: 1100px;
+
+    margin:
+        30px auto 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 18px;
+
+}
+
+
+#skills li {
+
+    position: relative;
+
+    padding: 25px 15px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,0.85);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    font-weight: 600;
+
+    color: var(--dark);
+
+    box-shadow:
+        0 8px 25px
+        rgba(27,41,34,0.05);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+
+}
+
+
+#skills li:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+/* =========================================================
+   13. EDUCATION
+========================================================= */
+
+#education {
+
+    background:
+        var(--white);
+
+    overflow-x:
+        auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin:
+        30px auto 0;
+
+    border-collapse:
+        separate;
+
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border-radius:
+        var(--radius);
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 10px 35px
+        rgba(27,41,34,0.06);
+
+}
+
+
+th {
+
+    padding:
+        18px;
+
+    text-align:
+        left;
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
+
+}
+
+
+td {
+
+    padding:
+        16px;
+
+    border-top:
+        1px solid var(--border);
+
+}
+
+
+tr:nth-child(even) {
+
+    background:
+        #F6F8F6;
+
+}
+
+
+tr {
+
+    transition:
+        background 0.3s ease;
+
+}
+
+
+tr:hover {
+
+    background:
+        #E8EDE9;
+
+}
+
+
+/* =========================================================
+   14. PROJECTS
+========================================================= */
+
+#projects {
+
+    background:
+        var(--light);
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        25px;
+
+}
+
+
+#projects > h2 {
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+.project-card {
+
+    position:
+        relative;
+
+    background:
+        rgba(255,255,255,0.9);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding:
+        32px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 10px 35px
+        rgba(27,41,34,0.06);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+
+}
+
+
+/* Decorative line on cards */
+
+.project-card::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--accent)
+        );
+
+}
+
+
+/* Project hover */
+
+.project-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 25px 60px
+        rgba(27,41,34,0.13);
+
+    border-color:
+        rgba(74,105,88,0.4);
+
+}
+
+
+.project-card h3 {
+
+    margin-bottom:
+        15px;
+
+    color:
+        var(--dark);
+
+    font-size:
+        1.3rem;
+
+}
+
+
 .project-card strong {
-    color: var(--primary);
+
+    color:
+        var(--accent);
+
 }
 
 
-/*
+.project-card a {
+
+    display:
+        inline-block;
+
+    margin-top:
+        15px;
+
+    padding:
+        9px 16px;
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
+
+    border-radius:
+        8px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        14px;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.project-card a:hover {
+
+    background:
+        var(--accent);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   15. CONTACT SECTION
+========================================================= */
+
+#contact {
+
+    background:
+        var(--white);
+
+}
+
+
+form {
+
+    max-width:
+        1100px;
+
+    margin:
+        30px auto 0;
+
+    padding:
+        40px;
+
+    background:
+        var(--light);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+form label {
+
+    color:
+        var(--dark);
+
+    font-weight:
+        600;
+
+}
+
+
+input,
+textarea,
+select {
+
+    width:
+        100%;
+
+    padding:
+        14px 16px;
+
+    margin-top:
+        7px;
+
+    margin-bottom:
+        18px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        9px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--text);
+
+    font-family:
+        inherit;
+
+    font-size:
+        15px;
+
+    outline:
+        none;
+
+    transition:
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(74,105,88,0.12);
+
+}
+
+
+textarea {
+
+    min-height:
+        150px;
+
+    resize:
+        vertical;
+
+}
+
+
+/* Keep radio/checkbox controls normal */
+
+input[type="checkbox"],
+input[type="radio"] {
+
+    width:
+        auto;
+
+    margin:
+        0 6px 0 0;
+
+}
+
+
+/* =========================================================
+   16. BUTTON
+========================================================= */
+
+button {
+
+    border:
+        none;
+
+    padding:
+        13px 28px;
+
+    border-radius:
+        9px;
+
+    background:
+        var(--dark);
+
+    color:
+        var(--white);
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+button:hover {
+
+    background:
+        var(--accent);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(27,41,34,0.2);
+
+}
+
+
+/* =========================================================
+   17. FOOTER
+========================================================= */
+
+footer {
+
+    padding:
+        50px 8%;
+
+    background:
+        var(--dark);
+
+    color:
+        #C9D5CD;
+
+    text-align:
+        center;
+
+}
+
+
+footer p {
+
+    margin-bottom:
+        8px;
+
+}
+
+
+footer a {
+
+    color:
+        #DCE5DF;
+
+    text-decoration:
+        none;
+
+    transition:
+        color 0.3s ease;
+
+}
+
+
+footer a:hover {
+
+    color:
+        var(--white);
+
+}
+
+
+/* =========================================================
+   18. FLOATING ANIMATION
+========================================================= */
+
+@keyframes float {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-25px);
+
+    }
+
+}
+
+
+/* =========================================================
+   19. RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    header {
+
+        width:
+            96%;
+
+    }
+
+
+    #skills ul {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+
+    #projects {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   20. RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+
+        position:
+            relative;
+
+        top:
+            0;
+
+        width:
+            100%;
+
+        margin:
+            0;
+
+        border-radius:
+            0;
+
+        flex-direction:
+            column;
+
+        padding:
+            18px 15px;
+
+    }
+
+
+    nav {
+
+        justify-content:
+            center;
+
+    }
+
+
+    nav a {
+
+        padding:
+            7px 9px;
+
+        font-size:
+            13px;
+
+    }
+
+
+    #home {
+
+        min-height:
+            80vh;
+
+        padding:
+            80px 6%;
+
+    }
+
+
+    #home h2 {
+
+        font-size:
+            2.6rem;
+
+        letter-spacing:
+            -1px;
+
+    }
+
+
+    #home img {
+
+        width:
+            150px;
+
+        height:
+            150px;
+
+    }
+
+
+    section:not(#home) {
+
+        padding:
+            70px 6%;
+
+    }
+
+
+    section h2 {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    #skills ul {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    form {
+
+        padding:
+            25px 20px;
+
+    }
+
+
+    table {
+
+        min-width:
+            750px;
+
+    }
+
+}
+
+
+/* =========================================================
+   21. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    #skills ul {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    #home h2 {
+
+        font-size:
+            2.2rem;
+
+    }
+
+
+    nav a {
+
+        font-size:
+            12px;
+
+        padding:
+            6px 8px;
+
+    }
+
+}
