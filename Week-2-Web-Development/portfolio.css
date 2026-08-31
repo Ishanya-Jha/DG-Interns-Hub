@@ -1,1 +1,355 @@
-ol
+/* ==============================
+   GENERAL STYLES
+   ============================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #f5f7fa;
+    color: #222;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   HEADER
+   ============================== */
+
+header {
+    background-color: #ffffff;
+    color: #222;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 3px solid #523b33;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #523b33;
+}
+
+header p {
+    margin: 8px 0 20px;
+    color: #666;
+}
+
+
+/* ==============================
+   NAVIGATION
+   ============================== */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+nav a {
+    color: #523b33;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #523b33;
+    color: white;
+}
+
+
+/* ==============================
+   MAIN CONTENT
+   ============================== */
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+
+/* ==============================
+   SECTIONS
+   ============================== */
+
+section {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+section h2 {
+    color: #523b33;
+    margin-top: 0;
+    border-bottom: 2px solid #e5ddd8;
+    padding-bottom: 8px;
+}
+
+section h3 {
+    color: #523b33;
+}
+
+
+/* ==============================
+   HOME SECTION
+   ============================== */
+
+#home {
+    text-align: center;
+}
+
+#home img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #523b33;
+    margin: 15px 0;
+}
+
+
+/* ==============================
+   LISTS
+   ============================== */
+
+ol,
+ul {
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+
+/* ==============================
+   EDUCATION TABLE
+   ============================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #523b33;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f6f4;
+}
+
+tr:hover {
+    background-color: #eee7e3;
+}
+
+
+/* ==============================
+   PROJECT CARDS
+   ============================== */
+
+.project-card {
+    border: 1px solid #ddd;
+    border-left: 5px solid #523b33;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.project-card h3 {
+    margin-top: 0;
+}
+
+
+/* ==============================
+   LINKS
+   ============================== */
+
+a {
+    color: #523b33;
+}
+
+.project-card a {
+    display: inline-block;
+    background-color: #523b33;
+    color: white;
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: 0.3s ease;
+}
+
+.project-card a:hover {
+    background-color: #382820;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   CONTACT FORM
+   ============================== */
+
+form {
+    max-width: 700px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #523b33;
+    box-shadow: 0 0 4px rgba(82, 59, 51, 0.2);
+}
+
+
+/* Checkbox and radio buttons */
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+
+/* ==============================
+   BUTTON
+   ============================== */
+
+button {
+    background-color: #523b33;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #382820;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   FOOTER
+   ============================== */
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 30px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    nav a {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    main {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #home img {
+        width: 120px;
+        height: 120px;
+    }
+}
