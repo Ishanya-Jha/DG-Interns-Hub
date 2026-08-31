@@ -1,6 +1,6 @@
-/* =========================
-   GENERAL STYLES
-========================= */
+/* =========================================
+   GLOBAL
+========================================= */
 
 * {
     margin: 0;
@@ -9,408 +9,642 @@
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #1f2937;
-    line-height: 1.6;
+:root {
+    --dark: #1B2922;
+    --primary: #435146;
+    --accent: #4A6958;
+    --text: #1C1C1C;
+    --background: #F4F5F2;
+    --white: #FFFFFF;
+    --border: #D9DED9;
+    --soft-green: #E8EDE9;
 }
 
-/* =========================
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+
+/* =========================================
    HEADER
-========================= */
+========================================= */
 
 header {
-    background: #ffffff;
-    padding: 20px 8%;
-    text-align: center;
-    border-bottom: 1px solid #e5e7eb;
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 18px 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 header h1 {
-    color: #172554;
-    font-size: 2rem;
-    margin-bottom: 4px;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 header p {
-    color: #64748b;
-    margin-bottom: 15px;
+    display: none;
 }
 
-/* =========================
+
+/* =========================================
    NAVIGATION
-========================= */
+========================================= */
 
 nav {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
 }
 
 nav a {
-    color: #334155;
+    color: #E8EDE9;
     text-decoration: none;
+
     padding: 8px 14px;
-    border-radius: 8px;
-    transition: 0.3s ease;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 nav a:hover {
-    background: #dbeafe;
-    color: #1d4ed8;
+    background-color: var(--accent);
+    color: var(--white);
     transform: translateY(-2px);
 }
 
-/* =========================
-   MAIN CONTENT
-========================= */
+
+/* =========================================
+   MAIN
+========================================= */
 
 main {
-    width: 90%;
-    max-width: 1100px;
-    margin: 35px auto;
+    width: 100%;
+    margin: 0;
 }
 
+
+/* =========================================
+   SECTIONS
+========================================= */
+
 section {
-    background: #ffffff;
-    padding: 40px;
-    margin-bottom: 25px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
-    animation: fadeUp 0.8s ease both;
+    width: 100%;
+    padding: 80px 8%;
+    margin: 0;
+
+    background-color: var(--white);
+
+    border-bottom: 1px solid #E6E9E6;
+
+    animation: fadeUp 0.7s ease both;
 }
 
 section h2 {
-    color: #172554;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    position: relative;
+    max-width: 1100px;
+    margin: 0 auto 25px;
+
+    color: var(--dark);
+
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 section h2::after {
     content: "";
+
     display: block;
+
     width: 45px;
     height: 3px;
-    background: #2563eb;
-    margin-top: 8px;
+
+    margin-top: 9px;
+
+    background-color: var(--accent);
+
     border-radius: 5px;
 }
 
-section p {
-    margin-bottom: 12px;
+section p,
+section ol,
+section ul,
+section table,
+section form {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* =========================
+
+/* =========================================
    HOME / HERO
-========================= */
+========================================= */
 
 #home {
+    min-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    padding: 60px 40px;
-    background: linear-gradient(135deg, #eff6ff, #ffffff);
+
+    padding: 90px 8%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #E8EDE9 0%,
+            #F4F5F2 50%,
+            #FFFFFF 100%
+        );
 }
 
 #home h2 {
-    font-size: 2.3rem;
-    color: #172554;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+
+    color: var(--dark);
+
+    margin-bottom: 10px;
 }
 
 #home h3 {
     font-size: 1.4rem;
-    color: #2563eb;
+
+    color: var(--accent);
+
     margin-bottom: 20px;
 }
 
 #home img {
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 170px;
+
     object-fit: cover;
+
     border-radius: 50%;
-    border: 5px solid #dbeafe;
-    margin: 15px 0 20px;
-    transition: 0.4s ease;
+
+    border: 5px solid var(--white);
+
+    box-shadow:
+        0 8px 25px rgba(27, 41, 34, 0.18);
+
+    margin: 20px 0 25px;
+
+    transition: transform 0.4s ease;
 }
 
 #home img:hover {
-    transform: scale(1.05);
-    border-color: #2563eb;
+    transform: scale(1.06);
 }
 
-/* =========================
-   LISTS
-========================= */
+#home p {
+    max-width: 700px;
 
-ol,
-ul {
+    color: #4B5563;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   WELCOME BUTTON
+========================================= */
+
+button {
+    background-color: var(--primary);
+
+    color: var(--white);
+
+    border: none;
+
+    padding: 13px 30px;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-top: 12px;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--accent);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(67, 81, 70, 0.25);
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+#about {
+    background-color: var(--white);
+}
+
+#about ol {
     padding-left: 25px;
-    margin-top: 15px;
 }
 
-li {
+#about li {
     margin-bottom: 8px;
 }
 
-/* =========================
+
+/* =========================================
    SKILLS
-========================= */
+========================================= */
+
+#skills {
+    background-color: var(--background);
+}
 
 #skills ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding-left: 0;
     list-style: none;
+
+    padding: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 15px;
 }
 
 #skills li {
-    background: #eff6ff;
-    padding: 12px 16px;
+    background-color: var(--white);
+
+    border: 1px solid var(--border);
+
+    padding: 18px;
+
+    text-align: center;
+
     border-radius: 8px;
-    color: #1e40af;
-    border: 1px solid #dbeafe;
-    transition: 0.3s ease;
+
+    color: var(--dark);
+
+    font-weight: 600;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 #skills li:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.12);
+    transform: translateY(-5px);
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 8px 20px rgba(27, 41, 34, 0.1);
 }
 
-/* =========================
-   EDUCATION TABLE
-========================= */
+
+/* =========================================
+   EDUCATION
+========================================= */
 
 #education {
+    background-color: var(--white);
+
     overflow-x: auto;
 }
 
 table {
     width: 100%;
+
     border-collapse: collapse;
-    margin-top: 15px;
+
+    margin-top: 20px;
 }
 
 th,
 td {
-    border: 1px solid #e2e8f0;
-    padding: 12px;
+    border: 1px solid var(--border);
+
+    padding: 14px;
+
     text-align: left;
 }
 
 th {
-    background: #172554;
-    color: #ffffff;
+    background-color: var(--dark);
+
+    color: var(--white);
 }
 
 tr:nth-child(even) {
-    background: #f8fafc;
+    background-color: #F7F8F6;
 }
 
 tr:hover {
-    background: #eff6ff;
+    background-color: var(--soft-green);
 }
 
-/* =========================
+
+/* =========================================
    PROJECTS
-========================= */
+========================================= */
 
 #projects {
+    background-color: var(--background);
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+    padding-left: 8%;
+    padding-right: 8%;
 }
 
 #projects > h2 {
     grid-column: 1 / -1;
+
+    width: 100%;
 }
 
 .project-card {
-    border: 1px solid #e2e8f0;
-    padding: 25px;
-    margin-bottom: 0;
+    max-width: none;
+
+    background-color: var(--white);
+
+    border: 1px solid var(--border);
+
     border-radius: 12px;
-    background: #ffffff;
-    transition: 0.3s ease;
+
+    padding: 30px;
+
+    margin: 0;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
-    border-color: #93c5fd;
+    transform: translateY(-7px);
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 12px 28px rgba(27, 41, 34, 0.12);
 }
 
 .project-card h3 {
-    color: #1e3a8a;
-    margin-bottom: 12px;
+    color: var(--dark);
+
+    margin-bottom: 15px;
+
+    font-size: 1.25rem;
 }
 
 .project-card strong {
-    color: #334155;
+    color: var(--primary);
 }
 
 .project-card a {
     display: inline-block;
-    margin-top: 10px;
-    color: #2563eb;
-    font-weight: bold;
+
+    margin-top: 12px;
+
+    color: var(--accent);
+
+    font-weight: 600;
+
     text-decoration: none;
 }
 
 .project-card a:hover {
+    color: var(--dark);
+
     text-decoration: underline;
 }
 
-/* =========================
-   CONTACT FORM
-========================= */
+
+/* =========================================
+   CONTACT
+========================================= */
+
+#contact {
+    background-color: var(--white);
+}
 
 form {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 form label {
-    display: inline-block;
-    margin-bottom: 6px;
     font-weight: 600;
-    color: #334155;
+
+    color: var(--dark);
 }
 
 input,
 textarea,
 select {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+
+    padding: 13px;
+
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
     font-family: inherit;
+
     font-size: 15px;
+
     outline: none;
-    transition: 0.3s ease;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px #dbeafe;
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px var(--soft-green);
 }
 
 textarea {
-    min-height: 130px;
+    min-height: 140px;
+
     resize: vertical;
 }
-
-/* Checkbox and radio inputs */
 
 input[type="checkbox"],
 input[type="radio"] {
     width: auto;
+
     margin-right: 5px;
 }
 
-/* Submit button */
 
-button {
-    background: #2563eb;
-    color: #ffffff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-button:hover {
-    background: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
-}
-
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer {
-    background: #172554;
-    color: #ffffff;
+    background-color: var(--dark);
+
+    color: var(--white);
+
     text-align: center;
-    padding: 25px;
-    margin-top: 30px;
+
+    padding: 35px 8%;
 }
 
 footer a {
-    color: #bfdbfe;
+    color: #C9D5CD;
+
     text-decoration: none;
+
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #ffffff;
+    color: var(--white);
+
     text-decoration: underline;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
+
+/* =========================================
+   ANIMATION
+========================================= */
 
 @keyframes fadeUp {
+
     from {
         opacity: 0;
-        transform: translateY(25px);
+
+        transform:
+            translateY(25px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
 
-@media (max-width: 768px) {
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
 
     header {
-        padding: 18px 5%;
-    }
+        flex-direction: column;
 
-    header h1 {
-        font-size: 1.6rem;
+        padding: 18px 5%;
+
+        gap: 12px;
     }
 
     nav {
-        gap: 4px;
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    #skills ul {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    #projects {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        position: relative;
+
+        padding: 20px 5%;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
     }
 
     nav a {
-        padding: 6px 9px;
-        font-size: 14px;
-    }
+        font-size: 13px;
 
-    main {
-        width: 94%;
-        margin: 20px auto;
+        padding: 7px 10px;
     }
 
     section {
-        padding: 25px;
+        padding: 55px 6%;
     }
 
     #home {
-        padding: 40px 20px;
+        min-height: auto;
+
+        padding: 70px 6%;
     }
 
     #home h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+
+    #home img {
+        width: 140px;
+        height: 140px;
     }
 
     #skills ul {
@@ -418,34 +652,15 @@ footer a:hover {
     }
 
     #projects {
-        grid-template-columns: 1fr;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .project-card {
+        padding: 22px;
     }
 
     table {
         min-width: 700px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    header h1 {
-        font-size: 1.4rem;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    section {
-        padding: 20px;
-    }
-
-    #home img {
-        width: 130px;
-        height: 130px;
-    }
-
-    #home h2 {
-        font-size: 1.5rem;
     }
 }
