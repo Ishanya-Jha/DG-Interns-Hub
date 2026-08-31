@@ -1,7 +1,19 @@
-/* =========================================
-   GLOBAL
-========================================= */
+/* =========================================================
+   WEEK 2 - PERSONAL PORTFOLIO WEBSITE
+   Technologies: HTML5 + CSS3 + JavaScript
+   Color Palette:
+   #435146 - Primary Green
+   #4A6958 - Secondary Green
+   #1B2922 - Dark Green
+   #1C1C1C - Dark Text
+========================================================= */
 
+
+/* =========================================================
+   1. GLOBAL STYLES
+========================================================= */
+
+/* Remove default browser spacing and enable smooth scrolling */
 * {
     margin: 0;
     padding: 0;
@@ -9,68 +21,103 @@
     scroll-behavior: smooth;
 }
 
+
+/* Store the website colors as CSS variables */
 :root {
-    --dark: #1B2922;
     --primary: #435146;
-    --accent: #4A6958;
+    --secondary: #4A6958;
+    --dark: #1B2922;
     --text: #1C1C1C;
+
     --background: #F4F5F2;
     --white: #FFFFFF;
+
     --border: #D9DED9;
-    --soft-green: #E8EDE9;
+    --light-green: #E8EDE9;
 }
 
+
+/* Main body styling */
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     background-color: var(--background);
+
     color: var(--text);
+
     line-height: 1.7;
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* =========================================================
+   2. HEADER
+========================================================= */
 
+/* Main header area */
 header {
     background-color: var(--dark);
+
     color: var(--white);
-    padding: 18px 5%;
+
+    padding: 20px 6%;
+
+    /* Keeps navigation visible while scrolling */
     position: sticky;
     top: 0;
+
     z-index: 1000;
+
+    /* Small shadow below the header */
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 
+    /* Places name and navigation horizontally */
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 30px;
 }
 
+
+/* Name in header */
 header h1 {
     font-size: 1.5rem;
+
     letter-spacing: 0.5px;
+
     white-space: nowrap;
 }
 
+
+/* Internship subtitle */
 header p {
     display: none;
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/* =========================================================
+   3. NAVIGATION
+========================================================= */
 
 nav {
     display: flex;
+
     align-items: center;
+
     justify-content: flex-end;
+
+    flex-wrap: wrap;
+
     gap: 6px;
 }
 
+
+/* Navigation links */
 nav a {
     color: #E8EDE9;
+
     text-decoration: none;
 
     padding: 8px 14px;
@@ -78,99 +125,124 @@ nav a {
     border-radius: 6px;
 
     font-size: 14px;
+
     font-weight: 500;
 
+    /* Smooth hover animation */
     transition:
         background-color 0.3s ease,
         color 0.3s ease,
         transform 0.3s ease;
 }
 
+
+/* Navigation hover effect */
 nav a:hover {
-    background-color: var(--accent);
+    background-color: var(--secondary);
+
     color: var(--white);
+
     transform: translateY(-2px);
 }
 
 
-/* =========================================
-   MAIN
-========================================= */
+/* =========================================================
+   4. MAIN CONTENT
+========================================================= */
 
+/* Main container uses the full browser width */
 main {
     width: 100%;
+
     margin: 0;
 }
 
 
-/* =========================================
-   SECTIONS
-========================================= */
+/* =========================================================
+   5. GENERAL SECTIONS
+========================================================= */
 
 section {
     width: 100%;
+
     padding: 80px 8%;
+
     margin: 0;
 
     background-color: var(--white);
 
     border-bottom: 1px solid #E6E9E6;
 
+    /* Entrance animation */
     animation: fadeUp 0.7s ease both;
 }
 
+
+/* Section headings */
 section h2 {
     max-width: 1100px;
+
     margin: 0 auto 25px;
 
     color: var(--dark);
 
     font-size: 2rem;
+
     font-weight: 700;
 }
 
+
+/* Decorative line below headings */
 section h2::after {
     content: "";
 
     display: block;
 
     width: 45px;
+
     height: 3px;
 
     margin-top: 9px;
 
-    background-color: var(--accent);
+    background-color: var(--secondary);
 
     border-radius: 5px;
 }
 
-section p,
-section ol,
-section ul,
-section table,
-section form {
+
+/* Keep paragraphs readable on large screens */
+section p {
     max-width: 1100px;
+
     margin-left: auto;
+
     margin-right: auto;
+
+    margin-bottom: 12px;
 }
 
 
-/* =========================================
-   HOME / HERO
-========================================= */
+/* =========================================================
+   6. HOME / HERO SECTION
+========================================================= */
 
 #home {
     min-height: 75vh;
 
+    /* Center hero content */
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
     padding: 90px 8%;
 
+    /* Soft green gradient */
     background:
         linear-gradient(
             135deg,
@@ -180,6 +252,8 @@ section form {
         );
 }
 
+
+/* Main hero heading */
 #home h2 {
     font-size: clamp(2.2rem, 5vw, 4rem);
 
@@ -188,16 +262,21 @@ section form {
     margin-bottom: 10px;
 }
 
+
+/* Name below hero heading */
 #home h3 {
     font-size: 1.4rem;
 
-    color: var(--accent);
+    color: var(--secondary);
 
     margin-bottom: 20px;
 }
 
+
+/* Profile image */
 #home img {
     width: 170px;
+
     height: 170px;
 
     object-fit: cover;
@@ -206,18 +285,24 @@ section form {
 
     border: 5px solid var(--white);
 
+    margin: 20px 0 25px;
+
+    /* Image shadow */
     box-shadow:
         0 8px 25px rgba(27, 41, 34, 0.18);
 
-    margin: 20px 0 25px;
-
+    /* Image hover animation */
     transition: transform 0.4s ease;
 }
 
+
+/* Profile image hover effect */
 #home img:hover {
     transform: scale(1.06);
 }
 
+
+/* Hero paragraph width */
 #home p {
     max-width: 700px;
 
@@ -227,9 +312,9 @@ section form {
 }
 
 
-/* =========================================
-   WELCOME BUTTON
-========================================= */
+/* =========================================================
+   7. BUTTON
+========================================================= */
 
 button {
     background-color: var(--primary);
@@ -248,14 +333,17 @@ button {
 
     margin-top: 12px;
 
+    /* Smooth button animation */
     transition:
         background-color 0.3s ease,
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
+
+/* Button hover effect */
 button:hover {
-    background-color: var(--accent);
+    background-color: var(--secondary);
 
     transform: translateY(-3px);
 
@@ -264,44 +352,63 @@ button:hover {
 }
 
 
-/* =========================================
-   ABOUT
-========================================= */
+/* =========================================================
+   8. ABOUT SECTION
+========================================================= */
 
 #about {
     background-color: var(--white);
 }
 
+
+/* Ordered list inside About section */
 #about ol {
+    max-width: 1100px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
     padding-left: 25px;
 }
 
+
+/* Space between list items */
 #about li {
     margin-bottom: 8px;
 }
 
 
-/* =========================================
-   SKILLS
-========================================= */
+/* =========================================================
+   9. SKILLS SECTION
+========================================================= */
 
 #skills {
     background-color: var(--background);
 }
 
+
+/* Skill list becomes a CSS Grid */
 #skills ul {
-    list-style: none;
+    max-width: 1100px;
+
+    margin-left: auto;
+
+    margin-right: auto;
 
     padding: 0;
 
+    list-style: none;
+
     display: grid;
 
-    grid-template-columns:
-        repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 
     gap: 15px;
 }
 
+
+/* Individual skill cards */
 #skills li {
     background-color: var(--white);
 
@@ -317,40 +424,48 @@ button:hover {
 
     font-weight: 600;
 
+    /* Hover animation */
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
         border-color 0.3s ease;
 }
 
+
+/* Skill card hover effect */
 #skills li:hover {
     transform: translateY(-5px);
 
-    border-color: var(--accent);
+    border-color: var(--secondary);
 
     box-shadow:
         0 8px 20px rgba(27, 41, 34, 0.1);
 }
 
 
-/* =========================================
-   EDUCATION
-========================================= */
+/* =========================================================
+   10. EDUCATION TABLE
+========================================================= */
 
+/* Allows table to scroll horizontally on small screens */
 #education {
-    background-color: var(--white);
-
     overflow-x: auto;
 }
 
+
+/* Table */
 table {
     width: 100%;
 
-    border-collapse: collapse;
+    max-width: 1100px;
 
-    margin-top: 20px;
+    margin: 20px auto 0;
+
+    border-collapse: collapse;
 }
 
+
+/* Table cells */
 th,
 td {
     border: 1px solid var(--border);
@@ -360,24 +475,30 @@ td {
     text-align: left;
 }
 
+
+/* Table header */
 th {
     background-color: var(--dark);
 
     color: var(--white);
 }
 
+
+/* Alternate table row */
 tr:nth-child(even) {
     background-color: #F7F8F6;
 }
 
+
+/* Table hover effect */
 tr:hover {
-    background-color: var(--soft-green);
+    background-color: var(--light-green);
 }
 
 
-/* =========================================
-   PROJECTS
-========================================= */
+/* =========================================================
+   11. PROJECT SECTION
+========================================================= */
 
 #projects {
     background-color: var(--background);
@@ -390,15 +511,20 @@ tr:hover {
     gap: 25px;
 
     padding-left: 8%;
+
     padding-right: 8%;
 }
 
+
+/* Project section heading takes full width */
 #projects > h2 {
     grid-column: 1 / -1;
 
     width: 100%;
 }
 
+
+/* Individual project card */
 .project-card {
     max-width: none;
 
@@ -412,21 +538,26 @@ tr:hover {
 
     margin: 0;
 
+    /* Project hover animation */
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
         border-color 0.3s ease;
 }
 
+
+/* Project card hover */
 .project-card:hover {
     transform: translateY(-7px);
 
-    border-color: var(--accent);
+    border-color: var(--secondary);
 
     box-shadow:
         0 12px 28px rgba(27, 41, 34, 0.12);
 }
 
+
+/* Project title */
 .project-card h3 {
     color: var(--dark);
 
@@ -435,232 +566,11 @@ tr:hover {
     font-size: 1.25rem;
 }
 
+
+/* Important project information */
 .project-card strong {
     color: var(--primary);
 }
 
-.project-card a {
-    display: inline-block;
 
-    margin-top: 12px;
-
-    color: var(--accent);
-
-    font-weight: 600;
-
-    text-decoration: none;
-}
-
-.project-card a:hover {
-    color: var(--dark);
-
-    text-decoration: underline;
-}
-
-
-/* =========================================
-   CONTACT
-========================================= */
-
-#contact {
-    background-color: var(--white);
-}
-
-form {
-    margin-top: 25px;
-}
-
-form label {
-    font-weight: 600;
-
-    color: var(--dark);
-}
-
-input,
-textarea,
-select {
-    width: 100%;
-
-    padding: 13px;
-
-    margin-top: 5px;
-    margin-bottom: 15px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 7px;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    outline: none;
-
-    transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: var(--accent);
-
-    box-shadow:
-        0 0 0 3px var(--soft-green);
-}
-
-textarea {
-    min-height: 140px;
-
-    resize: vertical;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    width: auto;
-
-    margin-right: 5px;
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer {
-    background-color: var(--dark);
-
-    color: var(--white);
-
-    text-align: center;
-
-    padding: 35px 8%;
-}
-
-footer a {
-    color: #C9D5CD;
-
-    text-decoration: none;
-
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: var(--white);
-
-    text-decoration: underline;
-}
-
-
-/* =========================================
-   ANIMATION
-========================================= */
-
-@keyframes fadeUp {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 900px) {
-
-    header {
-        flex-direction: column;
-
-        padding: 18px 5%;
-
-        gap: 12px;
-    }
-
-    nav {
-        justify-content: center;
-
-        flex-wrap: wrap;
-    }
-
-    #skills ul {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    #projects {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    header {
-        position: relative;
-
-        padding: 20px 5%;
-    }
-
-    header h1 {
-        font-size: 1.5rem;
-    }
-
-    nav a {
-        font-size: 13px;
-
-        padding: 7px 10px;
-    }
-
-    section {
-        padding: 55px 6%;
-    }
-
-    #home {
-        min-height: auto;
-
-        padding: 70px 6%;
-    }
-
-    #home h2 {
-        font-size: 2rem;
-    }
-
-    #home img {
-        width: 140px;
-        height: 140px;
-    }
-
-    #skills ul {
-        grid-template-columns: 1fr;
-    }
-
-    #projects {
-        padding-left: 6%;
-        padding-right: 6%;
-    }
-
-    .project-card {
-        padding: 22px;
-    }
-
-    table {
-        min-width: 700px;
-    }
-}
+/*
