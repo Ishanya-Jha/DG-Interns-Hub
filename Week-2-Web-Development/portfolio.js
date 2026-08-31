@@ -1,47 +1,33 @@
-/* ==============================
-   PORTFOLIO JAVASCRIPT
-   ============================== */
+// =========================
+// WELCOME MESSAGE
+// =========================
 
-
-/* ==============================
-   BUTTON CLICK FEATURE
-   ============================== */
-
-const welcomeButton = document.createElement("button");
-
-welcomeButton.textContent = "Welcome";
-
-welcomeButton.addEventListener("click", function () {
-    alert("Welcome to Ishanya Jha's Portfolio!");
+window.addEventListener("load", function () {
+    console.log("Portfolio website loaded successfully.");
 });
 
-const homeSection = document.getElementById("home");
 
-if (homeSection) {
-    homeSection.appendChild(welcomeButton);
-}
+// =========================
+// CONTACT FORM VALIDATION
+// =========================
 
+const form = document.querySelector("form");
 
-/* ==============================
-   CONTACT FORM VALIDATION
-   ============================== */
+if (form) {
+    form.addEventListener("submit", function (event) {
 
-const contactForm = document.querySelector("#contact form");
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const message = document.getElementById("message");
 
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function (event) {
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        if (name === "" || email === "" || message === "") {
-
+        if (
+            name.value.trim() === "" ||
+            email.value.trim() === "" ||
+            message.value.trim() === ""
+        ) {
             event.preventDefault();
 
-            alert("Please fill in your name, email and message.");
-
+            alert("Please fill in your name, email and message before submitting.");
             return;
         }
 
@@ -50,14 +36,23 @@ if (contactForm) {
 }
 
 
-/* ==============================
-   CURRENT YEAR IN FOOTER
-   ============================== */
+// =========================
+// NAVIGATION CLICK EFFECT
+// =========================
 
-const footerText = document.querySelector("footer p");
+const navLinks = document.querySelectorAll("nav a");
 
-if (footerText) {
-    footerText.innerHTML =
-        "&copy; " + new Date().getFullYear() +
-        " Ishanya Jha. All rights reserved.";
-}
+navLinks.forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navLinks.forEach(function (item) {
+            item.style.background = "";
+            item.style.color = "";
+        });
+
+        this.style.background = "#dbeafe";
+        this.style.color = "#1d4ed8";
+    });
+
+});
