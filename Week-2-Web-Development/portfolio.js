@@ -1,64 +1,216 @@
-// =========================
-// WELCOME MESSAGE
-// =========================
+/* =========================================================
+   ISHANYA JHA - PORTFOLIO JAVASCRIPT
+   Week 2 Web Development Internship
 
-window.addEventListener("load", function () {
-    console.log("Portfolio website loaded successfully.");
+   JavaScript Features:
+   1. Furnisher's automatic image slider
+   2. Interactive slider dots
+   3. Contact form validation
+   4. Form submission message
+========================================================= */
+
+
+/* =========================================================
+   1. FURNISHER'S PROJECT IMAGE SLIDER
+========================================================= */
+
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+let currentSlide = 0;
+
+
+/* Show a specific slide */
+
+function showSlide(index) {
+
+    if (slides.length === 0) {
+        return;
+    }
+
+    slides.forEach(function (slide) {
+
+        slide.classList.remove("active");
+
+    });
+
+
+    dots.forEach(function (dot) {
+
+        dot.classList.remove("active");
+
+    });
+
+
+    slides[index].classList.add("active");
+
+
+    if (dots[index]) {
+
+        dots[index].classList.add("active");
+
+    }
+
+}
+
+
+/* Move to the next screenshot */
+
+function nextSlide() {
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+
+        currentSlide = 0;
+
+    }
+
+    showSlide(currentSlide);
+
+}
+
+
+/* Automatically change screenshot every 3 seconds */
+
+if (slides.length > 0) {
+
+    setInterval(nextSlide, 3000);
+
+}
+
+
+/* =========================================================
+   2. CLICKABLE SLIDER DOTS
+========================================================= */
+
+dots.forEach(function (dot, index) {
+
+    dot.addEventListener("click", function () {
+
+        currentSlide = index;
+
+        showSlide(currentSlide);
+
+    });
+
 });
 
-const welcomeButton = document.getElementById("welcomeButton");
 
-if (welcomeButton) {
-    welcomeButton.addEventListener("click", function () {
-        alert("Welcome to Ishanya Jha's Portfolio!");
-    });
-}
-// =========================
-// CONTACT FORM VALIDATION
-// =========================
+/* =========================================================
+   3. CONTACT FORM VALIDATION
+========================================================= */
 
-const form = document.querySelector("form");
+const contactForm = document.querySelector("form");
 
-if (form) {
-    form.addEventListener("submit", function (event) {
 
-        const name = document.getElementById("name");
-        const email = document.getElementById("email");
-        const message = document.getElementById("message");
+if (contactForm) {
 
-        if (
-            name.value.trim() === "" ||
-            email.value.trim() === "" ||
-            message.value.trim() === ""
-        ) {
-            event.preventDefault();
+    contactForm.addEventListener("submit", function (event) {
 
-            alert("Please fill in your name, email and message before submitting.");
+        event.preventDefault();
+
+
+        /* Get form values */
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const subject =
+            document.getElementById("subject").value.trim();
+
+        const message =
+            document.getElementById("message").value.trim();
+
+
+        /* =================================================
+           BASIC VALIDATION
+        ================================================= */
+
+        if (name === "") {
+
+            alert("Please enter your full name.");
+
             return;
+
         }
 
-        alert("Thank you! Your message has been submitted.");
+
+        if (email === "") {
+
+            alert("Please enter your email address.");
+
+            return;
+
+        }
+
+
+        if (!email.includes("@") || !email.includes(".")) {
+
+            alert("Please enter a valid email address.");
+
+            return;
+
+        }
+
+
+        if (phone === "") {
+
+            alert("Please enter your phone number.");
+
+            return;
+
+        }
+
+
+        if (subject === "") {
+
+            alert("Please enter a subject.");
+
+            return;
+
+        }
+
+
+        if (message === "") {
+
+            alert("Please enter your message.");
+
+            return;
+
+        }
+
+
+        /* =================================================
+           SUCCESS MESSAGE
+        ================================================= */
+
+        alert(
+            "Thank you, " +
+            name +
+            "! Your message has been submitted successfully."
+        );
+
+
+        /* Clear the form */
+
+        contactForm.reset();
+
     });
+
 }
 
 
-// =========================
-// NAVIGATION CLICK EFFECT
-// =========================
+/* =========================================================
+   4. PAGE LOAD MESSAGE
+========================================================= */
 
-const navLinks = document.querySelectorAll("nav a");
-
-navLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navLinks.forEach(function (item) {
-            item.style.background = "";
-            item.style.color = "";
-        });
-
-        this.style.background = "#dbeafe";
-        this.style.color = "#1d4ed8";
-    });
-
-});
+console.log(
+    "Ishanya Jha Portfolio loaded successfully."
+);
