@@ -1,1 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmed | Furnisher's Web</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                FURNISHER'S
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="products.html">Shop</a>
+
+                <a href="sale.html">Sale</a>
+
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="cart.html">
+                    Cart
+                    <span id="cart-count">0</span>
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================== CONFIRMATION ==================== -->
+    <main>
+
+        <section class="confirmation-section">
+
+            <div class="confirmation-container">
+
+                <!-- Success Icon -->
+                <div class="confirmation-icon">
+                    ✓
+                </div>
+
+
+                <!-- Main Message -->
+                <span class="section-tag">
+                    ORDER SUCCESSFUL
+                </span>
+
+                <h1>
+                    Thank You for Your Order!
+                </h1>
+
+                <p class="confirmation-message">
+                    Your furniture order has been successfully placed.
+                    We appreciate your shopping with Furnisher's Web.
+                </p>
+
+
+                <!-- Order Details Card -->
+                <div class="confirmation-card">
+
+                    <div class="confirmation-card-header">
+
+                        <h2>
+                            Order Confirmation
+                        </h2>
+
+                        <span
+                            class="order-status"
+                            id="order-status">
+                            Confirmed
+                        </span>
+
+                    </div>
+
+
+                    <div class="confirmation-details">
+
+                        <!-- Order ID -->
+                        <div class="confirmation-detail">
+
+                            <span>
+                                Order ID
+                            </span>
+
+                            <strong id="confirmation-order-id">
+                                FW-000000
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Customer -->
+                        <div class="confirmation-detail">
+
+                            <span>
+                                Customer
+                            </span>
+
+                            <strong id="confirmation-customer">
+                                Customer
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Email -->
+                        <div class="confirmation-detail">
+
+                            <span>
+                                Email
+                            </span>
+
+                            <strong id="confirmation-email">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Payment -->
+                        <div class="confirmation-detail">
+
+                            <span>
+                                Payment Method
+                            </span>
+
+                            <strong id="confirmation-payment">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Total -->
+                        <div class="confirmation-detail">
+
+                            <span>
+                                Order Total
+                            </span>
+
+                            <strong id="confirmation-total">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Ordered Products -->
+                    <div class="confirmation-products">
+
+                        <h3>
+                            Ordered Products
+                        </h3>
+
+                        <div
+                            id="confirmation-items"
+                            class="confirmation-items">
+                        </div>
+
+                    </div>
+
+
+                    <!-- Delivery Information -->
+                    <div class="confirmation-delivery">
+
+                        <h3>
+                            Delivery Information
+                        </h3>
+
+                        <p id="confirmation-address">
+                            Your delivery address will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Next Actions -->
+                <div class="confirmation-actions">
+
+                    <a
+                        href="products.html"
+                        class="btn btn-primary">
+                        Continue Shopping
+                    </a>
+
+                    <a
+                        href="dashboard.html"
+                        class="btn btn-secondary">
+                        Go to Dashboard
+                    </a>
+
+                </div>
+
+
+                <!-- Additional Message -->
+                <p class="confirmation-note">
+
+                    A confirmation of your order details is available
+                    on this page. Thank you for choosing Furnisher's Web.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h3>FURNISHER'S</h3>
+
+                <p>
+                    Furniture that makes your space feel like home.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="sale.html">Sale</a>
+                <a href="cart.html">Cart</a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Furnisher's Web. Built for Web Application Internship.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
