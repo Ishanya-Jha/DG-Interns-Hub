@@ -1,1 +1,444 @@
-ok
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Furnisher's Web</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                FURNISHER'S
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="products.html">Shop</a>
+
+                <a href="sale.html">Sale</a>
+
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="cart.html">
+                    Cart
+                    <span id="cart-count">0</span>
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================== PAGE HEADER ==================== -->
+    <main>
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <span class="section-tag">
+                    FURNISHER'S WEB
+                </span>
+
+                <h1>Checkout</h1>
+
+                <p>
+                    Enter your billing details and review your order
+                    before proceeding to payment.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== CHECKOUT ==================== -->
+        <section class="checkout-section">
+
+            <div class="checkout-container">
+
+                <!-- ==================== BILLING FORM ==================== -->
+                <div class="checkout-form-card">
+
+                    <div class="checkout-card-header">
+
+                        <h2>Billing Details</h2>
+
+                        <p>
+                            Please provide the information required
+                            to process your order.
+                        </p>
+
+                    </div>
+
+
+                    <form id="checkout-form">
+
+                        <!-- Full Name -->
+                        <div class="form-group">
+
+                            <label for="checkout-name">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="checkout-name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+
+                        <!-- Email -->
+                        <div class="form-group">
+
+                            <label for="checkout-email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="checkout-email"
+                                name="email"
+                                placeholder="Enter your email address"
+                                required
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+
+                        <!-- Phone -->
+                        <div class="form-group">
+
+                            <label for="checkout-phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="checkout-phone"
+                                name="phone"
+                                placeholder="Enter your phone number"
+                                required
+                                pattern="[0-9]{10}"
+                                maxlength="10"
+                                autocomplete="tel"
+                            >
+
+                        </div>
+
+
+                        <!-- Address -->
+                        <div class="form-group">
+
+                            <label for="checkout-address">
+                                Delivery Address
+                            </label>
+
+                            <textarea
+                                id="checkout-address"
+                                name="address"
+                                rows="4"
+                                placeholder="Enter your complete delivery address"
+                                required
+                                autocomplete="street-address"></textarea>
+
+                        </div>
+
+
+                        <!-- City -->
+                        <div class="checkout-row">
+
+                            <div class="form-group">
+
+                                <label for="checkout-city">
+                                    City
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="checkout-city"
+                                    name="city"
+                                    placeholder="Enter city"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- State -->
+                            <div class="form-group">
+
+                                <label for="checkout-state">
+                                    State
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="checkout-state"
+                                    name="state"
+                                    placeholder="Enter state"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Pincode -->
+                        <div class="form-group">
+
+                            <label for="checkout-pincode">
+                                Pincode
+                            </label>
+
+                            <input
+                                type="text"
+                                id="checkout-pincode"
+                                name="pincode"
+                                placeholder="Enter 6-digit pincode"
+                                required
+                                pattern="[0-9]{6}"
+                                maxlength="6"
+                                autocomplete="postal-code"
+                            >
+
+                        </div>
+
+
+                        <!-- Order Notes -->
+                        <div class="form-group">
+
+                            <label for="checkout-notes">
+                                Order Notes
+                                <span class="optional">
+                                    (Optional)
+                                </span>
+                            </label>
+
+                            <textarea
+                                id="checkout-notes"
+                                name="notes"
+                                rows="3"
+                                placeholder="Any special delivery instructions?"></textarea>
+
+                        </div>
+
+
+                        <!-- Payment Notice -->
+                        <div class="checkout-payment-notice">
+
+                            <strong>
+                                Payment
+                            </strong>
+
+                            <p>
+                                Payment will be completed through the
+                                demonstration payment page after you
+                                confirm your order.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Form Message -->
+                        <p
+                            id="checkout-message"
+                            class="form-message"
+                            aria-live="polite">
+                        </p>
+
+
+                        <!-- Continue Button -->
+                        <button
+                            type="submit"
+                            class="btn btn-primary checkout-submit"
+                            id="checkout-submit">
+                            Continue to Payment
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ==================== ORDER SUMMARY ==================== -->
+                <aside class="checkout-summary">
+
+                    <div class="checkout-card-header">
+
+                        <h2>Your Order</h2>
+
+                        <p id="checkout-item-count">
+                            0 items
+                        </p>
+
+                    </div>
+
+
+                    <!-- Cart Products -->
+                    <div
+                        id="checkout-items"
+                        class="checkout-items">
+                    </div>
+
+
+                    <!-- Empty Order -->
+                    <div
+                        id="checkout-empty"
+                        class="checkout-empty"
+                        hidden>
+
+                        <p>
+                            Your cart is empty.
+                        </p>
+
+                        <a
+                            href="products.html"
+                            class="btn btn-secondary">
+                            Browse Products
+                        </a>
+
+                    </div>
+
+
+                    <!-- Price Breakdown -->
+                    <div class="checkout-price-details">
+
+                        <div class="price-row">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="checkout-subtotal">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <span>
+                                Delivery
+                            </span>
+
+                            <strong id="checkout-delivery">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="price-row total-row">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="checkout-total">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Security Info -->
+                    <div class="checkout-security">
+
+                        <span>🔒</span>
+
+                        <p>
+                            Your order details are processed securely
+                            through the Furnisher's Web application.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h3>FURNISHER'S</h3>
+
+                <p>
+                    Furniture that makes your space feel like home.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="sale.html">Sale</a>
+                <a href="cart.html">Cart</a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Furnisher's Web. Built for Web Application Internship.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
