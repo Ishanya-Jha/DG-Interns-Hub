@@ -1,1 +1,259 @@
-ok
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Furnisher's Web</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                FURNISHER'S
+            </a>
+
+            <button class="menu-toggle" id="menu-toggle">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="products.html">Shop</a>
+
+                <a href="sale.html">Sale</a>
+
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="cart.html">
+                    Cart
+                    <span id="cart-count">0</span>
+                </a>
+
+                <a href="login.html" class="active">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================== LOGIN SECTION ==================== -->
+    <main>
+
+        <section class="auth-section">
+
+            <div class="auth-container">
+
+                <!-- Left Information Panel -->
+                <div class="auth-info">
+
+                    <span class="section-tag">
+                        WELCOME BACK
+                    </span>
+
+                    <h1>
+                        Login to<br>
+                        Furnisher's Web
+                    </h1>
+
+                    <p>
+                        Access your account, manage your orders,
+                        continue shopping and complete your furniture
+                        purchases securely.
+                    </p>
+
+                    <div class="auth-features">
+
+                        <div class="auth-feature">
+                            <span>✓</span>
+                            <p>Manage your orders</p>
+                        </div>
+
+                        <div class="auth-feature">
+                            <span>✓</span>
+                            <p>Complete checkout faster</p>
+                        </div>
+
+                        <div class="auth-feature">
+                            <span>✓</span>
+                            <p>Keep your shopping details organized</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Login Form -->
+                <div class="auth-card">
+
+                    <div class="auth-card-header">
+
+                        <h2>Login</h2>
+
+                        <p>
+                            Enter your account details below.
+                        </p>
+
+                    </div>
+
+
+                    <form id="login-form">
+
+                        <!-- Email -->
+                        <div class="form-group">
+
+                            <label for="login-email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="login-email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+
+                        <!-- Password -->
+                        <div class="form-group">
+
+                            <label for="login-password">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                placeholder="Enter your password"
+                                required
+                                autocomplete="current-password"
+                            >
+
+                        </div>
+
+
+                        <!-- Remember Me -->
+                        <div class="form-options">
+
+                            <label class="checkbox-label">
+
+                                <input
+                                    type="checkbox"
+                                    id="remember-me"
+                                >
+
+                                <span>
+                                    Remember me
+                                </span>
+
+                            </label>
+
+                            <a href="#" id="forgot-password">
+                                Forgot Password?
+                            </a>
+
+                        </div>
+
+
+                        <!-- Login Button -->
+                        <button
+                            type="submit"
+                            class="btn btn-primary auth-submit"
+                            id="login-btn"
+                        >
+                            Login
+                        </button>
+
+
+                        <!-- Login Message -->
+                        <p
+                            id="login-message"
+                            class="form-message"
+                            aria-live="polite"
+                        ></p>
+
+                    </form>
+
+
+                    <!-- Signup Link -->
+                    <div class="auth-footer">
+
+                        <p>
+                            Don't have an account?
+                            <a href="signup.html">
+                                Create an account
+                            </a>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h3>FURNISHER'S</h3>
+
+                <p>
+                    Furniture that makes your space feel like home.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="sale.html">Sale</a>
+                <a href="cart.html">Cart</a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Furnisher's Web. Built for Web Application Internship.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script src="script.js"></script>
+
+</body>
+</html>
