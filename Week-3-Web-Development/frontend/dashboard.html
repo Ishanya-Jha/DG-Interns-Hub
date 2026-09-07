@@ -6,12 +6,11 @@
 
     <meta
         name="description"
-        content="Furnisher's Web - Modern furniture shopping experience."
+        content="Furnisher's Web customer dashboard."
     >
 
-    <title>Furnisher's Web | Home</title>
+    <title>Furnisher's Web | Dashboard</title>
 
-    <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,7 +26,7 @@
 
         <nav class="nav-links">
 
-            <a href="index.html" class="active">
+            <a href="index.html">
                 Home
             </a>
 
@@ -39,7 +38,7 @@
                 Sale
             </a>
 
-            <a href="dashboard.html">
+            <a href="dashboard.html" class="active">
                 Dashboard
             </a>
 
@@ -54,7 +53,6 @@
 
         </nav>
 
-        <!-- Mobile navigation button -->
         <button
             type="button"
             class="menu-toggle"
@@ -67,317 +65,386 @@
     </header>
 
 
-    <!-- ==================== HERO SECTION ==================== -->
+    <!-- ==================== DASHBOARD HEADER ==================== -->
 
     <main>
 
-        <section class="hero">
+        <section class="page-header">
 
-            <div class="hero-content">
+            <p>
+                FURNISHER'S WEB
+            </p>
 
-                <p class="hero-subtitle">
-                    WELCOME TO FURNISHER'S WEB
-                </p>
+            <h1>
+                Store Dashboard
+            </h1>
 
-                <h1>
-                    Furniture That Makes
-                    <span>Your Space Better.</span>
-                </h1>
-
-                <p class="hero-description">
-                    Discover stylish, comfortable and carefully selected
-                    furniture for your home and workspace.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="products.html" class="primary-btn">
-                        Shop Now
-                    </a>
-
-                    <a href="dashboard.html" class="secondary-btn">
-                        Explore Store
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="hero-visual">
-
-                <div class="hero-card">
-
-                    <span class="hero-card-icon">
-                        🛋️
-                    </span>
-
-                    <h3>
-                        Modern Furniture
-                    </h3>
-
-                    <p>
-                        Comfort meets style.
-                    </p>
-
-                </div>
-
-            </div>
+            <p>
+                Explore furniture, discover offers and manage your shopping.
+            </p>
 
         </section>
 
 
-        <!-- ==================== CATEGORIES ==================== -->
+        <!-- ==================== SALE POPUP ==================== -->
 
-        <section class="categories section-padding">
+        <div
+            class="sale-overlay"
+            id="sale-overlay"
+            aria-hidden="true"
+        >
 
-            <div class="section-heading">
+            <div
+                class="sale-popup"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="sale-popup-title"
+            >
 
-                <p>
-                    EXPLORE OUR COLLECTION
+                <button
+                    type="button"
+                    class="close-popup"
+                    id="close-sale-popup"
+                    aria-label="Close sale popup"
+                >
+                    ×
+                </button>
+
+                <p class="sale-popup-label">
+                    LIMITED TIME OFFER
                 </p>
 
-                <h2>
-                    Shop By Category
+                <h2 id="sale-popup-title">
+                    FURNISHER'S SALE
                 </h2>
 
-            </div>
+                <div class="sale-discount">
+                    UP TO 30% OFF
+                </div>
 
-
-            <div class="category-container">
-
-                <a
-                    href="products.html?category=sofa"
-                    class="category-card"
-                >
-
-                    <div class="category-icon">
-                        🛋️
-                    </div>
-
-                    <h3>
-                        Sofas
-                    </h3>
-
-                    <p>
-                        Comfortable designs for your living space.
-                    </p>
-
-                </a>
-
+                <p>
+                    Refresh your space with selected furniture
+                    at special prices.
+                </p>
 
                 <a
-                    href="products.html?category=chair"
-                    class="category-card"
+                    href="sale.html"
+                    class="primary-btn"
+                    id="popup-sale-btn"
                 >
-
-                    <div class="category-icon">
-                        🪑
-                    </div>
-
-                    <h3>
-                        Chairs
-                    </h3>
-
-                    <p>
-                        Modern seating for every room.
-                    </p>
-
-                </a>
-
-
-                <a
-                    href="products.html?category=dining"
-                    class="category-card"
-                >
-
-                    <div class="category-icon">
-                        🍽️
-                    </div>
-
-                    <h3>
-                        Dining Tables
-                    </h3>
-
-                    <p>
-                        Make every meal more memorable.
-                    </p>
-
-                </a>
-
-
-                <a
-                    href="products.html?category=coffee"
-                    class="category-card"
-                >
-
-                    <div class="category-icon">
-                        ☕
-                    </div>
-
-                    <h3>
-                        Coffee Tables
-                    </h3>
-
-                    <p>
-                        Simple pieces with a modern touch.
-                    </p>
-
-                </a>
-
-
-                <a
-                    href="products.html?category=bed"
-                    class="category-card"
-                >
-
-                    <div class="category-icon">
-                        🛏️
-                    </div>
-
-                    <h3>
-                        Beds & Decor
-                    </h3>
-
-                    <p>
-                        Create a relaxing personal space.
-                    </p>
-
-                </a>
-
-
-                <a
-                    href="products.html?category=lighting"
-                    class="category-card"
-                >
-
-                    <div class="category-icon">
-                        💡
-                    </div>
-
-                    <h3>
-                        Lamps & Lights
-                    </h3>
-
-                    <p>
-                        Lighting that completes your room.
-                    </p>
-
+                    Shop Sale
                 </a>
 
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- ==================== FEATURED SECTION ==================== -->
+        <!-- ==================== WELCOME ==================== -->
 
-        <section class="featured section-padding">
+        <section class="dashboard-section">
 
-            <div class="featured-content">
+            <div class="dashboard-welcome">
 
-                <div class="featured-text">
+                <div>
 
                     <p class="section-label">
-                        FURNISHER'S COLLECTION
+                        WELCOME
                     </p>
 
-                    <h2>
-                        Designed For
-                        <span>Modern Living</span>
+                    <h2 id="dashboard-user-name">
+                        Welcome to Furnisher's
                     </h2>
 
                     <p>
-                        From comfortable sofas to elegant dining tables,
-                        explore furniture designed to bring functionality
-                        and style together.
+                        Find something beautiful for your home,
+                        add it to your cart and place your order.
                     </p>
+
+                </div>
+
+                <a
+                    href="products.html"
+                    class="primary-btn"
+                >
+                    Start Shopping
+                </a>
+
+            </div>
+
+
+            <!-- ==================== DASHBOARD CARDS ==================== -->
+
+            <div class="dashboard-grid">
+
+                <a
+                    href="products.html"
+                    class="dashboard-card"
+                >
+
+                    <div class="dashboard-card-icon">
+                        🛍️
+                    </div>
+
+                    <div>
+                        <h3>
+                            Browse Products
+                        </h3>
+
+                        <p>
+                            Explore our furniture catalogue.
+                        </p>
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="sale.html"
+                    class="dashboard-card"
+                >
+
+                    <div class="dashboard-card-icon">
+                        🔥
+                    </div>
+
+                    <div>
+                        <h3>
+                            Today's Sale
+                        </h3>
+
+                        <p>
+                            View furniture available at special prices.
+                        </p>
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="cart.html"
+                    class="dashboard-card"
+                >
+
+                    <div class="dashboard-card-icon">
+                        🛒
+                    </div>
+
+                    <div>
+                        <h3>
+                            Your Cart
+                        </h3>
+
+                        <p>
+                            Review selected products before checkout.
+                        </p>
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="login.html"
+                    class="dashboard-card"
+                >
+
+                    <div class="dashboard-card-icon">
+                        👤
+                    </div>
+
+                    <div>
+                        <h3>
+                            My Account
+                        </h3>
+
+                        <p>
+                            Login or create an account to purchase.
+                        </p>
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==================== CATEGORIES ==================== -->
+
+            <div class="dashboard-categories">
+
+                <div class="section-heading">
+
+                    <p>
+                        SHOP FURNISHER'S
+                    </p>
+
+                    <h2>
+                        Explore Categories
+                    </h2>
+
+                </div>
+
+
+                <div class="category-container">
+
+                    <a
+                        href="products.html?category=sofa"
+                        class="category-card"
+                    >
+
+                        <div class="category-icon">
+                            🛋️
+                        </div>
+
+                        <h3>
+                            Sofas
+                        </h3>
+
+                        <p>
+                            Comfortable living room furniture.
+                        </p>
+
+                    </a>
+
+
+                    <a
+                        href="products.html?category=chair"
+                        class="category-card"
+                    >
+
+                        <div class="category-icon">
+                            🪑
+                        </div>
+
+                        <h3>
+                            Chairs
+                        </h3>
+
+                        <p>
+                            Stylish seating solutions.
+                        </p>
+
+                    </a>
+
+
+                    <a
+                        href="products.html?category=dining"
+                        class="category-card"
+                    >
+
+                        <div class="category-icon">
+                            🍽️
+                        </div>
+
+                        <h3>
+                            Dining Tables
+                        </h3>
+
+                        <p>
+                            Tables for memorable meals.
+                        </p>
+
+                    </a>
+
+
+                    <a
+                        href="products.html?category=coffee"
+                        class="category-card"
+                    >
+
+                        <div class="category-icon">
+                            ☕
+                        </div>
+
+                        <h3>
+                            Coffee Tables
+                        </h3>
+
+                        <p>
+                            Modern tables for your living room.
+                        </p>
+
+                    </a>
+
+
+                    <a
+                        href="products.html?category=bed"
+                        class="category-card"
+                    >
+
+                        <div class="category-icon">
+                            🛏️
+                        </div>
+
+                        <h3>
+                            Beds & Decor
+                        </h3>
+
+                        <p>
+                            Create a relaxing bedroom.
+                        </p>
+
+                    </a>
+
+
+                    <a
+                        href="products.html?category=lighting"
+                        class="category-card"
+                    >
+
+                        <div class="category-icon">
+                            💡
+                        </div>
+
+                        <h3>
+                            Lamps & Lights
+                        </h3>
+
+                        <p>
+                            Complete your space with lighting.
+                        </p>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================== QUICK ACTIONS ==================== -->
+
+            <div class="quick-actions">
+
+                <div>
+
+                    <p class="section-label">
+                        READY TO SHOP?
+                    </p>
+
+                    <h2>
+                        Find Your Next Favourite Piece
+                    </h2>
+
+                </div>
+
+                <div class="hero-buttons">
 
                     <a
                         href="products.html"
                         class="primary-btn"
                     >
-                        View Collection
+                        Browse Products
+                    </a>
+
+                    <a
+                        href="sale.html"
+                        class="secondary-btn dashboard-secondary-btn"
+                    >
+                        View Sale
                     </a>
 
                 </div>
 
-
-                <div class="featured-box">
-
-                    <div class="featured-icon">
-                        🏠
-                    </div>
-
-                    <h3>
-                        Furniture For Every Space
-                    </h3>
-
-                    <p>
-                        Living Room • Bedroom • Dining • Workspace
-                    </p>
-
-                </div>
-
             </div>
-
-        </section>
-
-
-        <!-- ==================== SALE BANNER ==================== -->
-
-        <section class="sale-banner">
-
-            <div class="sale-banner-content">
-
-                <p>
-                    LIMITED TIME OFFER
-                </p>
-
-                <h2>
-                    Furnisher's Sale
-                </h2>
-
-                <span>
-                    Get up to 30% OFF on selected furniture.
-                </span>
-
-            </div>
-
-            <a
-                href="sale.html"
-                class="sale-btn"
-            >
-                View Sale
-            </a>
-
-        </section>
-
-
-        <!-- ==================== ABOUT SECTION ==================== -->
-
-        <section class="about section-padding">
-
-            <div class="section-heading">
-
-                <p>
-                    ABOUT FURNISHER'S
-                </p>
-
-                <h2>
-                    Furniture With Purpose
-                </h2>
-
-            </div>
-
-            <p class="about-text">
-
-                Furnisher's Web is a modern furniture shopping platform
-                designed to make furniture discovery and purchasing simple.
-                Browse our catalogue, select your favourite products,
-                add them to your cart and complete your order through
-                our easy checkout process.
-
-            </p>
 
         </section>
 
@@ -392,7 +459,10 @@
 
             <div class="footer-brand">
 
-                <a href="index.html" class="footer-logo">
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                >
                     FURNISHER'S
                 </a>
 
@@ -419,10 +489,6 @@
 
                 <a href="sale.html">
                     Sale
-                </a>
-
-                <a href="dashboard.html">
-                    Dashboard
                 </a>
 
                 <a href="cart.html">
