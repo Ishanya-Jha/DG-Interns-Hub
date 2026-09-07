@@ -1802,7 +1802,6 @@ function calculateCartTotals() {
 
 }
 
-
 /* =========================================================
    15. PAYMENT PAGE
    ========================================================= */
@@ -1816,13 +1815,11 @@ function initializePaymentPage() {
         return;
     }
 
-
     const user =
         getLoggedInUser();
 
     const cart =
         getCart();
-
 
     if (!user) {
 
@@ -1830,9 +1827,7 @@ function initializePaymentPage() {
             "login.html?redirect=checkout";
 
         return;
-
     }
-
 
     if (cart.length === 0) {
 
@@ -1840,24 +1835,18 @@ function initializePaymentPage() {
             "cart.html";
 
         return;
-
     }
-
 
     const checkoutData =
         JSON.parse(
-            localStorage.getItem(
-                "furnishers_checkout"
-            )
+            localStorage.getItem("furnishers_checkout")
         ) || {};
-
 
     const paymentMessage =
         getElement("payment-message");
 
     const paymentSubmit =
         getElement("payment-submit");
-
 
     const cardFields =
         getElement("card-payment-fields");
@@ -1867,7 +1856,6 @@ function initializePaymentPage() {
 
     const codFields =
         getElement("cod-payment-fields");
-
 
     const paymentMethods =
         document.querySelectorAll(
@@ -1882,30 +1870,25 @@ function initializePaymentPage() {
                 'input[name="payment-method"]:checked'
             );
 
-
         const method =
             selected
                 ? selected.value
                 : "card";
-
 
         if (cardFields) {
             cardFields.hidden =
                 method !== "card";
         }
 
-
         if (upiFields) {
             upiFields.hidden =
                 method !== "upi";
         }
 
-
         if (codFields) {
             codFields.hidden =
                 method !== "cod";
         }
-
     }
 
 
@@ -1977,28 +1960,36 @@ function initializePaymentPage() {
 
 
     if (itemCount) {
+
         itemCount.textContent =
             totals.quantity;
+
     }
 
 
     if (subtotalElement) {
+
         subtotalElement.textContent =
             formatPrice(totals.subtotal);
+
     }
 
 
     if (deliveryElement) {
+
         deliveryElement.textContent =
             totals.delivery === 0
                 ? "Free"
                 : formatPrice(totals.delivery);
+
     }
 
 
     if (totalElement) {
+
         totalElement.textContent =
             formatPrice(totals.total);
+
     }
 
 
@@ -2021,6 +2012,8 @@ function initializePaymentPage() {
                     : "card";
 
 
+            /* Card validation */
+
             if (method === "card") {
 
                 const cardNumber =
@@ -2034,5 +2027,658 @@ function initializePaymentPage() {
 
 
                 if (
+                    !cardNumber ||
+                    !cardExpiry ||
+                    !cardCVV ||
                     !cardNumber.value.trim() ||
-                    !cardExp
+                    !cardExpiry.value.trim() ||
+                    !cardCVV.value.trim()
+                ) {
+
+                    showMessage(
+                        paymentMessage,
+                        "Please complete the card details.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+            /* UPI validation */
+
+            if (method === "upi") {
+
+                const upiId =
+                    getElement("upi-id");
+
+
+                if (
+                    !upiId ||
+                    !upiId.value.trim()
+                ) {
+
+                    showMessage(
+                        paymentMessage,
+                        "Please enter your UPI ID.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+            if (paymentSubmit) {
+
+                paymentSubmit.disabled = true;
+
+                paymentSubmit.textContent =
+                    "Processing...";
+
+            }
+
+
+            try {
+
+                /*
+                   Send order to backend.
+                */
+
+                const response =
+                    await fetch(
+                        `${API_URL}/orders`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                user_id:
+                                    user.id,
+
+                                payment_method:
+                                    method,
+
+                                checkout:
+                                    checkoutData,
+
+                                items:
+                                    cart.map(
+                                        item => ({
+
+                                            product_id:
+                                                item.id,
+
+                                            quantity:
+                                                item.quantity
+
+                                        })
+                                    )
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to place order."
+                    );
+
+                }
+
+
+                /*
+                   Store confirmation information
+                   temporarily in browser storage.
+                */
+
+                const confirmation = {
+
+                    order_number:
+                        data.order_number,
+
+                    customer:
+                        checkoutData.name ||
+                        user.name,
+
+                    email:
+                        checkoutData.email ||
+                        user.email,
+
+                    payment:
+                        method.toUpperCase(),
+
+                    total:
+                        totals.total,
+
+                    address:
+                        `${checkoutData.address}, ${checkoutData.city}, ${checkoutData.state} - ${checkoutData.pincode}`,
+
+                    items:
+                        cart
+
+                };
+
+
+                localStorage.setItem(
+                    "furnishers_confirmation",
+                    JSON.stringify(
+                        confirmation
+                    )
+                );
+
+
+                /*
+                   Clear cart after successful order.
+                */
+
+                localStorage.removeItem(
+                    "furnishers_cart"
+                );
+
+
+                localStorage.removeItem(
+                    "furnishers_checkout"
+                );
+
+
+                /*
+                   Go to confirmation page.
+                */
+
+                window.location.href =
+                    "confirmation.html";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Payment error:",
+                    error
+                );
+
+
+                showMessage(
+                    paymentMessage,
+                    error.message,
+                    "error"
+                );
+
+
+            } finally {
+
+                if (paymentSubmit) {
+
+                    paymentSubmit.disabled =
+                        false;
+
+                    paymentSubmit.textContent =
+                        "Place Order";
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   16. CART TOTAL CALCULATOR
+   ========================================================= */
+
+function calculateCartTotals() {
+
+    const cart =
+        getCart();
+
+
+    let subtotal = 0;
+
+    let quantity = 0;
+
+
+    cart.forEach(item => {
+
+        subtotal +=
+            Number(item.price || 0) *
+            Number(item.quantity || 0);
+
+        quantity +=
+            Number(item.quantity || 0);
+
+    });
+
+
+    const delivery =
+        subtotal >= 50000
+            ? 0
+            : cart.length > 0
+                ? 499
+                : 0;
+
+
+    return {
+
+        subtotal:
+            subtotal,
+
+        delivery:
+            delivery,
+
+        total:
+            subtotal + delivery,
+
+        quantity:
+            quantity
+
+    };
+
+}
+
+
+/* =========================================================
+   17. CONFIRMATION PAGE
+   ========================================================= */
+
+function initializeConfirmationPage() {
+
+    const confirmationOrderId =
+        getElement("confirmation-order-id");
+
+
+    if (!confirmationOrderId) {
+        return;
+    }
+
+
+    const confirmation =
+        JSON.parse(
+            localStorage.getItem(
+                "furnishers_confirmation"
+            )
+        );
+
+
+    if (!confirmation) {
+        return;
+    }
+
+
+    const customer =
+        getElement("confirmation-customer");
+
+    const email =
+        getElement("confirmation-email");
+
+    const payment =
+        getElement("confirmation-payment");
+
+    const total =
+        getElement("confirmation-total");
+
+    const address =
+        getElement("confirmation-address");
+
+    const items =
+        getElement("confirmation-items");
+
+
+    confirmationOrderId.textContent =
+        confirmation.order_number ||
+        "N/A";
+
+
+    if (customer) {
+
+        customer.textContent =
+            confirmation.customer ||
+            "";
+
+    }
+
+
+    if (email) {
+
+        email.textContent =
+            confirmation.email ||
+            "";
+
+    }
+
+
+    if (payment) {
+
+        payment.textContent =
+            confirmation.payment ||
+            "";
+
+    }
+
+
+    if (total) {
+
+        total.textContent =
+            formatPrice(
+                confirmation.total ||
+                0
+            );
+
+    }
+
+
+    if (address) {
+
+        address.textContent =
+            confirmation.address ||
+            "";
+
+    }
+
+
+    if (
+        items &&
+        confirmation.items
+    ) {
+
+        items.innerHTML = "";
+
+
+        confirmation.items.forEach(
+            item => {
+
+                items.insertAdjacentHTML(
+                    "beforeend",
+                    `
+                        <div class="checkout-item">
+
+                            <span>
+                                ${item.name} × ${item.quantity}
+                            </span>
+
+                            <strong>
+                                ${formatPrice(
+                                    Number(item.price) *
+                                    Number(item.quantity)
+                                )}
+                            </strong>
+
+                        </div>
+                    `
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   18. DASHBOARD
+   ========================================================= */
+
+function initializeDashboardPage() {
+
+    const userName =
+        getElement("dashboard-user-name");
+
+
+    const user =
+        getLoggedInUser();
+
+
+    if (userName) {
+
+        userName.textContent =
+            user
+                ? user.name
+                : "Guest";
+
+    }
+
+
+    const saleOverlay =
+        getElement("sale-overlay");
+
+    const closeSale =
+        getElement("close-sale-popup");
+
+    const saleButton =
+        getElement("popup-sale-btn");
+
+
+    /*
+       Show sale popup once per browser session.
+    */
+
+    if (
+        saleOverlay &&
+        !sessionStorage.getItem(
+            "furnishers_sale_popup"
+        )
+    ) {
+
+        saleOverlay.hidden =
+            false;
+
+        sessionStorage.setItem(
+            "furnishers_sale_popup",
+            "shown"
+        );
+
+    }
+
+
+    if (closeSale) {
+
+        closeSale.addEventListener(
+            "click",
+            function () {
+
+                saleOverlay.hidden =
+                    true;
+
+            }
+        );
+
+    }
+
+
+    if (saleButton) {
+
+        saleButton.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "sale.html";
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   19. SALE PAGE
+   ========================================================= */
+
+async function initializeSalePage() {
+
+    const saleGrid =
+        getElement("sale-product-grid");
+
+
+    if (!saleGrid) {
+        return;
+    }
+
+
+    const emptySale =
+        getElement("empty-sale-products");
+
+
+    const products =
+        await getProducts();
+
+
+    const saleProducts =
+        products.filter(
+            product =>
+
+                Number(
+                    product.sale_price || 0
+                ) > 0 &&
+
+                Number(
+                    product.sale_price || 0
+                ) <
+
+                Number(
+                    product.price || 0
+                )
+        );
+
+
+    saleGrid.innerHTML = "";
+
+
+    saleProducts.forEach(
+        product => {
+
+            saleGrid.insertAdjacentHTML(
+                "beforeend",
+                createProductCard(product)
+            );
+
+        }
+    );
+
+
+    if (
+        emptySale &&
+        saleProducts.length === 0
+    ) {
+
+        emptySale.hidden =
+            false;
+
+    }
+
+}
+
+
+/* =========================================================
+   20. NAVIGATION STATE
+   ========================================================= */
+
+function updateNavigationState() {
+
+    const user =
+        getLoggedInUser();
+
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
+
+
+    navLinks.forEach(
+        link => {
+
+            if (
+                link.textContent.trim() ===
+                "Login"
+            ) {
+
+                if (user) {
+
+                    link.textContent =
+                        "Logout";
+
+                    link.href =
+                        "#";
+
+
+                    link.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.preventDefault();
+
+                            logoutUser();
+
+                        }
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   21. APPLICATION INITIALIZATION
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        setupMobileMenu();
+
+        updateCartCount();
+
+        updateNavigationState();
+
+        initializeProductsPage();
+
+        initializeProductPage();
+
+        initializeCartPage();
+
+        initializeLoginPage();
+
+        initializeSignupPage();
+
+        initializeCheckoutPage();
+
+        initializePaymentPage();
+
+        initializeConfirmationPage();
+
+        initializeDashboardPage();
+
+        initializeSalePage();
+
+    }
+);
