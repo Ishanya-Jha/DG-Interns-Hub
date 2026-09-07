@@ -1,1 +1,499 @@
-cart.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Review your shopping cart at Furnisher's Web."
+    >
+
+    <title>Furnisher's Web | Cart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================== NAVIGATION ==================== -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            FURNISHER'S
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Shop
+            </a>
+
+            <a href="sale.html">
+                Sale
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a
+                href="cart.html"
+                class="active cart-link"
+            >
+                Cart
+                <span
+                    id="cart-count"
+                    class="cart-count"
+                >
+                    0
+                </span>
+            </a>
+
+            <a
+                href="login.html"
+                class="login-btn"
+            >
+                Login
+            </a>
+
+        </nav>
+
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation menu"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+
+    <!-- ==================== PAGE HEADER ==================== -->
+
+    <main>
+
+        <section class="page-header">
+
+            <p>
+                FURNISHER'S WEB
+            </p>
+
+            <h1>
+                Your Shopping Cart
+            </h1>
+
+            <p>
+                Review your selected furniture before checkout.
+            </p>
+
+        </section>
+
+
+
+        <!-- ==================== CART SECTION ==================== -->
+
+        <section class="cart-section">
+
+
+            <div class="cart-layout">
+
+
+                <!-- ==================== CART ITEMS ==================== -->
+
+                <div class="cart-items-container">
+
+
+                    <div class="cart-heading">
+
+                        <div>
+
+                            <p class="section-label">
+                                YOUR SELECTION
+                            </p>
+
+                            <h2>
+                                Cart Items
+                            </h2>
+
+                        </div>
+
+
+                        <span
+                            id="cart-item-count"
+                            class="cart-item-count"
+                        >
+                            0 Items
+                        </span>
+
+                    </div>
+
+
+
+                    <!--
+                        JavaScript will create cart items
+                        inside this container.
+                    -->
+
+                    <div
+                        id="cart-items"
+                        class="cart-items"
+                    >
+                    </div>
+
+
+
+                    <!-- ==================== EMPTY CART ==================== -->
+
+                    <div
+                        id="empty-cart"
+                        class="empty-cart"
+                        hidden
+                    >
+
+                        <div class="empty-icon">
+                            🛒
+                        </div>
+
+                        <h3>
+                            Your Cart Is Empty
+                        </h3>
+
+                        <p>
+                            You haven't added any furniture yet.
+                        </p>
+
+                        <a
+                            href="products.html"
+                            class="primary-btn"
+                        >
+                            Start Shopping
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================== ORDER SUMMARY ==================== -->
+
+                <aside class="cart-summary">
+
+
+                    <h2>
+                        Order Summary
+                    </h2>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Items
+                        </span>
+
+                        <span id="summary-items">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <span id="cart-subtotal">
+                            ₹0
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <span id="cart-delivery">
+                            Free
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-divider">
+                    </div>
+
+
+                    <div class="summary-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <span id="cart-total">
+                            ₹0
+                        </span>
+
+                    </div>
+
+
+                    <!-- ==================== CHECKOUT ==================== -->
+
+                    <button
+                        type="button"
+                        id="checkout-btn"
+                        class="checkout-btn"
+                        disabled
+                    >
+                        Proceed To Checkout
+                    </button>
+
+
+                    <p
+                        id="checkout-message"
+                        class="form-message"
+                        aria-live="polite"
+                    >
+                    </p>
+
+
+                    <a
+                        href="products.html"
+                        class="continue-shopping"
+                    >
+                        ← Continue Shopping
+                    </a>
+
+
+                </aside>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================== SHOPPING BENEFITS ==================== -->
+
+        <section class="shopping-info">
+
+
+            <div class="section-heading">
+
+                <p>
+                    FURNISHER'S SHOPPING
+                </p>
+
+                <h2>
+                    Simple & Convenient
+                </h2>
+
+            </div>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🛒
+                    </div>
+
+                    <h3>
+                        Easy Cart
+                    </h3>
+
+                    <p>
+                        Add products and adjust quantities
+                        before placing your order.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💰
+                    </div>
+
+                    <h3>
+                        Clear Pricing
+                    </h3>
+
+                    <p>
+                        See your subtotal and final total
+                        before checkout.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        Account Required
+                    </h3>
+
+                    <p>
+                        Login or create an account before
+                        completing your purchase.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💳
+                    </div>
+
+                    <h3>
+                        Easy Checkout
+                    </h3>
+
+                    <p>
+                        Complete your billing information
+                        and continue to payment.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================== FOOTER ==================== -->
+
+    <footer class="footer">
+
+
+        <div class="footer-content">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                >
+                    FURNISHER'S
+                </a>
+
+                <p>
+                    Furniture for modern living.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Shop
+                </a>
+
+                <a href="sale.html">
+                    Sale
+                </a>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Account
+                </h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="signup.html">
+                    Create Account
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Furnisher's Web. All Rights Reserved.
+            </p>
+
+            <p>
+                Web Application Internship Project
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- Main JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
