@@ -1,2 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
 
-ok
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sale | Furnisher's Web</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                FURNISHER'S
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="products.html">Shop</a>
+
+                <a href="sale.html" class="active">Sale</a>
+
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="cart.html">
+                    Cart
+                    <span id="cart-count">0</span>
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================== SALE HERO ==================== -->
+    <main>
+
+        <section class="sale-page-hero">
+
+            <div class="container">
+
+                <span class="section-tag">
+                    LIMITED TIME OFFER
+                </span>
+
+                <h1>
+                    Furnisher's Sale
+                </h1>
+
+                <p>
+                    Refresh your home with selected furniture at
+                    special prices.
+                </p>
+
+                <a
+                    href="products.html"
+                    class="btn btn-primary">
+                    Browse All Products
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SALE PRODUCTS ==================== -->
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-tag">
+                        SPECIAL OFFERS
+                    </span>
+
+                    <h2>
+                        Featured Sale Products
+                    </h2>
+
+                    <p>
+                        Explore selected furniture available at
+                        promotional prices.
+                    </p>
+
+                </div>
+
+
+                <!-- JavaScript will load sale products here -->
+                <div
+                    class="product-grid"
+                    id="sale-product-grid">
+                </div>
+
+
+                <!-- Empty State -->
+                <div
+                    id="empty-sale-products"
+                    class="empty-state"
+                    hidden>
+
+                    <h3>
+                        No sale products available
+                    </h3>
+
+                    <p>
+                        Check back later for new offers.
+                    </p>
+
+                    <a
+                        href="products.html"
+                        class="btn btn-secondary">
+                        Continue Shopping
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SALE BENEFITS ==================== -->
+        <section class="section sale-benefits-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-tag">
+                        SHOP WITH CONFIDENCE
+                    </span>
+
+                    <h2>
+                        Why Shop Our Sale?
+                    </h2>
+
+                </div>
+
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            %
+                        </div>
+
+                        <h3>
+                            Special Prices
+                        </h3>
+
+                        <p>
+                            Enjoy selected furniture at promotional
+                            prices during our sale.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            Quality Furniture
+                        </h3>
+
+                        <p>
+                            Explore furniture designed for comfort,
+                            style and everyday use.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            🛒
+                        </div>
+
+                        <h3>
+                            Easy Shopping
+                        </h3>
+
+                        <p>
+                            Add products to your cart and complete
+                            your order through the checkout process.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SALE CTA ==================== -->
+        <section class="sale-cta">
+
+            <div class="container">
+
+                <span class="section-tag">
+                    FURNISHER'S WEB
+                </span>
+
+                <h2>
+                    Find Something You Love
+                </h2>
+
+                <p>
+                    Explore our complete furniture collection and
+                    discover products for every room.
+                </p>
+
+                <a
+                    href="products.html"
+                    class="btn btn-primary">
+                    Shop Now
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h3>
+                    FURNISHER'S
+                </h3>
+
+                <p>
+                    Furniture that makes your space feel like home.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Shop
+                </a>
+
+                <a href="sale.html">
+                    Sale
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Furnisher's Web. Built for Web Application Internship.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
