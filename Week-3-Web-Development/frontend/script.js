@@ -1015,3 +1015,1024 @@ function initializeCartPage() {
            Free delivery
 
            Other orders:
+        /*
+           Delivery rule:
+
+           Orders above ₹50,000:
+           Free delivery
+
+           Other orders:
+           ₹499 delivery
+        */
+
+        const delivery =
+            subtotal >= 50000
+                ? 0
+                : 499;
+
+        const total =
+            subtotal + delivery;
+
+
+        if (summaryItems) {
+            summaryItems.textContent =
+                totalQuantity;
+        }
+
+
+        if (subtotalElement) {
+            subtotalElement.textContent =
+                formatPrice(subtotal);
+        }
+
+
+        if (deliveryElement) {
+            deliveryElement.textContent =
+                delivery === 0
+                    ? "Free"
+                    : formatPrice(delivery);
+        }
+
+
+        if (totalElement) {
+            totalElement.textContent =
+                formatPrice(total);
+        }
+
+
+        if (itemCountElement) {
+            itemCountElement.textContent =
+                `${totalQuantity} item${totalQuantity === 1 ? "" : "s"}`;
+        }
+
+
+        if (checkoutButton) {
+            checkoutButton.disabled = false;
+        }
+
+
+        cartItems.querySelectorAll("[data-action]").forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const index =
+                            Number(button.dataset.index);
+
+                        const action =
+                            button.dataset.action;
+
+                        const currentCart =
+                            getCart();
+
+
+                        if (!currentCart[index]) {
+                            return;
+                        }
+
+
+                        if (action === "increase") {
+
+                            currentCart[index].quantity++;
+
+                        }
+
+
+                        if (action === "decrease") {
+
+                            currentCart[index].quantity--;
+
+                            if (
+                                currentCart[index].quantity <= 0
+                            ) {
+                                currentCart.splice(index, 1);
+                            }
+
+                        }
+
+
+                        if (action === "remove") {
+
+                            currentCart.splice(index, 1);
+
+                        }
+
+
+                        saveCart(currentCart);
+
+                        renderCart();
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    if (checkoutButton) {
+
+        checkoutButton.addEventListener(
+            "click",
+            function () {
+
+                const cart =
+                    getCart();
+
+                if (cart.length === 0) {
+                    return;
+                }
+
+
+                const user =
+                    getLoggedInUser();
+
+
+                if (!user) {
+
+                    window.location.href =
+                        "login.html?redirect=checkout";
+
+                    return;
+
+                }
+
+
+                window.location.href =
+                    "checkout.html";
+
+            }
+        );
+
+    }
+
+
+    renderCart();
+
+}
+
+
+/* =========================================================
+   11. LOGIN PAGE
+   ========================================================= */
+
+function initializeLoginPage() {
+
+    const form =
+        getElement("login-form");
+
+    if (!form) {
+        return;
+    }
+
+
+    const emailInput =
+        getElement("login-email");
+
+    const passwordInput =
+        getElement("login-password");
+
+    const message =
+        getElement("login-message");
+
+    const loginButton =
+        getElement("login-btn");
+
+
+    form.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const email =
+                emailInput.value.trim();
+
+            const password =
+                passwordInput.value;
+
+
+            if (!email || !password) {
+
+                showMessage(
+                    message,
+                    "Please enter your email and password.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (loginButton) {
+                loginButton.disabled = true;
+                loginButton.textContent = "Logging in...";
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/users/login`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                email,
+                                password
+                            })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Invalid email or password."
+                    );
+
+                }
+
+
+                saveLoggedInUser(data.user);
+
+
+                showMessage(
+                    message,
+                    "Login successful. Redirecting...",
+                    "success"
+                );
+
+
+                const params =
+                    new URLSearchParams(
+                        window.location.search
+                    );
+
+
+                const redirect =
+                    params.get("redirect");
+
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            redirect === "checkout"
+                                ? "checkout.html"
+                                : "dashboard.html";
+
+                    },
+                    500
+                );
+
+
+            } catch (error) {
+
+                showMessage(
+                    message,
+                    error.message,
+                    "error"
+                );
+
+            } finally {
+
+                if (loginButton) {
+                    loginButton.disabled = false;
+                    loginButton.textContent = "Login";
+                }
+
+            }
+
+        }
+    );
+
+
+    const forgotPassword =
+        getElement("forgot-password");
+
+
+    if (forgotPassword) {
+
+        forgotPassword.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                showMessage(
+                    message,
+                    "Password recovery is not included in this internship MVP.",
+                    "info"
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   12. SIGNUP PAGE
+   ========================================================= */
+
+function initializeSignupPage() {
+
+    const form =
+        getElement("signup-form");
+
+    if (!form) {
+        return;
+    }
+
+
+    const nameInput =
+        getElement("signup-name");
+
+    const emailInput =
+        getElement("signup-email");
+
+    const passwordInput =
+        getElement("signup-password");
+
+    const confirmPasswordInput =
+        getElement("signup-confirm-password");
+
+    const message =
+        getElement("signup-message");
+
+    const signupButton =
+        getElement("signup-btn");
+
+
+    form.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                nameInput.value.trim();
+
+            const email =
+                emailInput.value.trim();
+
+            const password =
+                passwordInput.value;
+
+            const confirmPassword =
+                confirmPasswordInput.value;
+
+
+            if (!name || !email || !password) {
+
+                showMessage(
+                    message,
+                    "Please complete all required fields.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (password !== confirmPassword) {
+
+                showMessage(
+                    message,
+                    "Passwords do not match.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (password.length < 6) {
+
+                showMessage(
+                    message,
+                    "Password must contain at least 6 characters.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (signupButton) {
+                signupButton.disabled = true;
+                signupButton.textContent = "Creating account...";
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/users/register`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                name,
+                                email,
+                                password
+                            })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to create account."
+                    );
+
+                }
+
+
+                showMessage(
+                    message,
+                    "Account created successfully. Redirecting to login...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "login.html";
+
+                    },
+                    800
+                );
+
+
+            } catch (error) {
+
+                showMessage(
+                    message,
+                    error.message,
+                    "error"
+                );
+
+            } finally {
+
+                if (signupButton) {
+                    signupButton.disabled = false;
+                    signupButton.textContent = "Create Account";
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   13. CHECKOUT PAGE
+   ========================================================= */
+
+function initializeCheckoutPage() {
+
+    const form =
+        getElement("checkout-form");
+
+    if (!form) {
+        return;
+    }
+
+
+    const user =
+        getLoggedInUser();
+
+
+    if (!user) {
+
+        window.location.href =
+            "login.html?redirect=checkout";
+
+        return;
+
+    }
+
+
+    const cart =
+        getCart();
+
+
+    if (cart.length === 0) {
+
+        window.location.href =
+            "cart.html";
+
+        return;
+
+    }
+
+
+    const nameInput =
+        getElement("checkout-name");
+
+    const emailInput =
+        getElement("checkout-email");
+
+    const phoneInput =
+        getElement("checkout-phone");
+
+    const addressInput =
+        getElement("checkout-address");
+
+    const cityInput =
+        getElement("checkout-city");
+
+    const stateInput =
+        getElement("checkout-state");
+
+    const pincodeInput =
+        getElement("checkout-pincode");
+
+    const notesInput =
+        getElement("checkout-notes");
+
+    const message =
+        getElement("checkout-message");
+
+
+    if (nameInput) {
+        nameInput.value = user.name || "";
+    }
+
+
+    if (emailInput) {
+        emailInput.value = user.email || "";
+    }
+
+
+    const itemsContainer =
+        getElement("checkout-items");
+
+
+    if (itemsContainer) {
+
+        itemsContainer.innerHTML = "";
+
+        cart.forEach(item => {
+
+            itemsContainer.insertAdjacentHTML(
+                "beforeend",
+                `
+                    <div class="checkout-item">
+                        <span>
+                            ${item.name} × ${item.quantity}
+                        </span>
+
+                        <strong>
+                            ${formatPrice(
+                                Number(item.price) *
+                                Number(item.quantity)
+                            )}
+                        </strong>
+                    </div>
+                `
+            );
+
+        });
+
+    }
+
+
+    const totals =
+        calculateCartTotals();
+
+
+    const itemCount =
+        getElement("checkout-item-count");
+
+    const subtotalElement =
+        getElement("checkout-subtotal");
+
+    const deliveryElement =
+        getElement("checkout-delivery");
+
+    const totalElement =
+        getElement("checkout-total");
+
+
+    if (itemCount) {
+        itemCount.textContent =
+            totals.quantity;
+    }
+
+
+    if (subtotalElement) {
+        subtotalElement.textContent =
+            formatPrice(totals.subtotal);
+    }
+
+
+    if (deliveryElement) {
+        deliveryElement.textContent =
+            totals.delivery === 0
+                ? "Free"
+                : formatPrice(totals.delivery);
+    }
+
+
+    if (totalElement) {
+        totalElement.textContent =
+            formatPrice(totals.total);
+    }
+
+
+    form.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            if (
+                !nameInput.value.trim() ||
+                !emailInput.value.trim() ||
+                !phoneInput.value.trim() ||
+                !addressInput.value.trim() ||
+                !cityInput.value.trim() ||
+                !stateInput.value.trim() ||
+                !pincodeInput.value.trim()
+            ) {
+
+                showMessage(
+                    message,
+                    "Please complete all required billing details.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const checkoutData = {
+
+                name:
+                    nameInput.value.trim(),
+
+                email:
+                    emailInput.value.trim(),
+
+                phone:
+                    phoneInput.value.trim(),
+
+                address:
+                    addressInput.value.trim(),
+
+                city:
+                    cityInput.value.trim(),
+
+                state:
+                    stateInput.value.trim(),
+
+                pincode:
+                    pincodeInput.value.trim(),
+
+                notes:
+                    notesInput
+                        ? notesInput.value.trim()
+                        : ""
+
+            };
+
+
+            localStorage.setItem(
+                "furnishers_checkout",
+                JSON.stringify(checkoutData)
+            );
+
+
+            window.location.href =
+                "payment.html";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   14. CART TOTAL CALCULATOR
+   ========================================================= */
+
+function calculateCartTotals() {
+
+    const cart =
+        getCart();
+
+
+    let subtotal = 0;
+
+    let quantity = 0;
+
+
+    cart.forEach(item => {
+
+        subtotal +=
+            Number(item.price || 0) *
+            Number(item.quantity || 0);
+
+        quantity +=
+            Number(item.quantity || 0);
+
+    });
+
+
+    const delivery =
+        subtotal >= 50000
+            ? 0
+            : cart.length > 0
+                ? 499
+                : 0;
+
+
+    return {
+
+        subtotal:
+            subtotal,
+
+        delivery:
+            delivery,
+
+        total:
+            subtotal + delivery,
+
+        quantity:
+            quantity
+
+    };
+
+}
+
+
+/* =========================================================
+   15. PAYMENT PAGE
+   ========================================================= */
+
+function initializePaymentPage() {
+
+    const form =
+        getElement("payment-form");
+
+    if (!form) {
+        return;
+    }
+
+
+    const user =
+        getLoggedInUser();
+
+    const cart =
+        getCart();
+
+
+    if (!user) {
+
+        window.location.href =
+            "login.html?redirect=checkout";
+
+        return;
+
+    }
+
+
+    if (cart.length === 0) {
+
+        window.location.href =
+            "cart.html";
+
+        return;
+
+    }
+
+
+    const checkoutData =
+        JSON.parse(
+            localStorage.getItem(
+                "furnishers_checkout"
+            )
+        ) || {};
+
+
+    const paymentMessage =
+        getElement("payment-message");
+
+    const paymentSubmit =
+        getElement("payment-submit");
+
+
+    const cardFields =
+        getElement("card-payment-fields");
+
+    const upiFields =
+        getElement("upi-payment-fields");
+
+    const codFields =
+        getElement("cod-payment-fields");
+
+
+    const paymentMethods =
+        document.querySelectorAll(
+            'input[name="payment-method"]'
+        );
+
+
+    function updatePaymentFields() {
+
+        const selected =
+            document.querySelector(
+                'input[name="payment-method"]:checked'
+            );
+
+
+        const method =
+            selected
+                ? selected.value
+                : "card";
+
+
+        if (cardFields) {
+            cardFields.hidden =
+                method !== "card";
+        }
+
+
+        if (upiFields) {
+            upiFields.hidden =
+                method !== "upi";
+        }
+
+
+        if (codFields) {
+            codFields.hidden =
+                method !== "cod";
+        }
+
+    }
+
+
+    paymentMethods.forEach(
+        input => {
+
+            input.addEventListener(
+                "change",
+                updatePaymentFields
+            );
+
+        }
+    );
+
+
+    updatePaymentFields();
+
+
+    const totals =
+        calculateCartTotals();
+
+
+    const itemContainer =
+        getElement("payment-items");
+
+
+    if (itemContainer) {
+
+        itemContainer.innerHTML = "";
+
+        cart.forEach(item => {
+
+            itemContainer.insertAdjacentHTML(
+                "beforeend",
+                `
+                    <div class="checkout-item">
+
+                        <span>
+                            ${item.name} × ${item.quantity}
+                        </span>
+
+                        <strong>
+                            ${formatPrice(
+                                Number(item.price) *
+                                Number(item.quantity)
+                            )}
+                        </strong>
+
+                    </div>
+                `
+            );
+
+        });
+
+    }
+
+
+    const itemCount =
+        getElement("payment-item-count");
+
+    const subtotalElement =
+        getElement("payment-subtotal");
+
+    const deliveryElement =
+        getElement("payment-delivery");
+
+    const totalElement =
+        getElement("payment-total");
+
+
+    if (itemCount) {
+        itemCount.textContent =
+            totals.quantity;
+    }
+
+
+    if (subtotalElement) {
+        subtotalElement.textContent =
+            formatPrice(totals.subtotal);
+    }
+
+
+    if (deliveryElement) {
+        deliveryElement.textContent =
+            totals.delivery === 0
+                ? "Free"
+                : formatPrice(totals.delivery);
+    }
+
+
+    if (totalElement) {
+        totalElement.textContent =
+            formatPrice(totals.total);
+    }
+
+
+    form.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const selected =
+                document.querySelector(
+                    'input[name="payment-method"]:checked'
+                );
+
+
+            const method =
+                selected
+                    ? selected.value
+                    : "card";
+
+
+            if (method === "card") {
+
+                const cardNumber =
+                    getElement("card-number");
+
+                const cardExpiry =
+                    getElement("card-expiry");
+
+                const cardCVV =
+                    getElement("card-cvv");
+
+
+                if (
+                    !cardNumber.value.trim() ||
+                    !cardExp
