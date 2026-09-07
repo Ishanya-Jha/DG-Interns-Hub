@@ -1,1 +1,466 @@
-ok
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Browse furniture products at Furnisher's Web."
+    >
+
+    <title>Furnisher's Web | Shop</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================== NAVIGATION ==================== -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            FURNISHER'S
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html" class="active">
+                Shop
+            </a>
+
+            <a href="sale.html">
+                Sale
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="cart.html" class="cart-link">
+                Cart
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </nav>
+
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation menu"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+
+    <!-- ==================== PAGE HEADER ==================== -->
+
+    <main>
+
+        <section class="page-header">
+
+            <p>
+                FURNISHER'S COLLECTION
+            </p>
+
+            <h1>
+                Shop Furniture
+            </h1>
+
+            <p>
+                Discover furniture designed for modern living.
+            </p>
+
+        </section>
+
+
+
+        <!-- ==================== SHOP SECTION ==================== -->
+
+        <section class="products-section">
+
+
+            <!-- ==================== SHOP CONTROLS ==================== -->
+
+            <div class="shop-controls">
+
+
+                <div class="shop-intro">
+
+                    <p class="section-label">
+                        OUR PRODUCTS
+                    </p>
+
+                    <h2>
+                        Furniture Collection
+                    </h2>
+
+                </div>
+
+
+                <div class="product-controls">
+
+
+                    <!-- Category Filter -->
+
+                    <div class="filter-group">
+
+                        <label for="category-filter">
+                            Category
+                        </label>
+
+                        <select id="category-filter">
+
+                            <option value="all">
+                                All Products
+                            </option>
+
+                            <option value="sofa">
+                                Sofas
+                            </option>
+
+                            <option value="chair">
+                                Chairs
+                            </option>
+
+                            <option value="dining">
+                                Dining Tables
+                            </option>
+
+                            <option value="coffee">
+                                Coffee Tables
+                            </option>
+
+                            <option value="bed">
+                                Beds & Decor
+                            </option>
+
+                            <option value="lighting">
+                                Lamps & Lights
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Search -->
+
+                    <div class="search-group">
+
+                        <label for="product-search">
+                            Search
+                        </label>
+
+                        <input
+                            type="search"
+                            id="product-search"
+                            placeholder="Search furniture..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================== PRODUCT STATUS ==================== -->
+
+            <div
+                class="product-status"
+                id="product-status"
+                aria-live="polite"
+            >
+                Loading products...
+            </div>
+
+
+
+            <!-- ==================== PRODUCT GRID ==================== -->
+
+            <div
+                class="product-grid"
+                id="product-grid"
+            >
+
+
+                <!--
+                    Product cards will be inserted here
+                    dynamically by script.js.
+
+                    Later:
+                    MySQL
+                       ↓
+                    Express API
+                       ↓
+                    JavaScript
+                       ↓
+                    This product-grid
+                -->
+
+
+            </div>
+
+
+
+            <!-- ==================== NO PRODUCTS MESSAGE ==================== -->
+
+            <div
+                class="empty-products"
+                id="empty-products"
+                hidden
+            >
+
+                <div class="empty-icon">
+                    🪑
+                </div>
+
+                <h3>
+                    No Products Found
+                </h3>
+
+                <p>
+                    Try another category or search term.
+                </p>
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="clear-filters"
+                >
+                    Clear Filters
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================== SHOPPING INFORMATION ==================== -->
+
+        <section class="shopping-info">
+
+
+            <div class="section-heading">
+
+                <p>
+                    SHOP WITH CONFIDENCE
+                </p>
+
+                <h2>
+                    Why Shop With Us?
+                </h2>
+
+            </div>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🚚
+                    </div>
+
+                    <h3>
+                        Easy Shopping
+                    </h3>
+
+                    <p>
+                        Browse our collection and add your
+                        favourite furniture to your cart.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🛒
+                    </div>
+
+                    <h3>
+                        Simple Cart
+                    </h3>
+
+                    <p>
+                        Adjust quantities and see your total
+                        price before checkout.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🔒
+                    </div>
+
+                    <h3>
+                        Account Required To Purchase
+                    </h3>
+
+                    <p>
+                        You can browse freely. Login or create
+                        an account when you are ready to purchase.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💳
+                    </div>
+
+                    <h3>
+                        Easy Checkout
+                    </h3>
+
+                    <p>
+                        Complete your billing details and
+                        continue to our payment demo.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================== FOOTER ==================== -->
+
+    <footer class="footer">
+
+
+        <div class="footer-content">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                >
+                    FURNISHER'S
+                </a>
+
+                <p>
+                    Furniture for modern living.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Shop
+                </a>
+
+                <a href="sale.html">
+                    Sale
+                </a>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Account
+                </h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="signup.html">
+                    Create Account
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Furnisher's Web. All Rights Reserved.
+            </p>
+
+            <p>
+                Web Application Internship Project
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- Main JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
