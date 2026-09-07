@@ -1,1 +1,15 @@
-ohh
+{
+  "name": "furnishers-web-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Furnisher's Web furniture e-commerce application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5"
+  }
+}
