@@ -7,7 +7,7 @@ const games = [
         id: 1,
         name: "Cyber Strike",
         category: "Action",
-        image: "images/game1.jpg",
+        image: "images/game1.png",
         description:
             "Enter a futuristic battlefield and fight your way through intense action-packed missions."
     },
@@ -16,7 +16,7 @@ const games = [
         id: 2,
         name: "Speed Legends",
         category: "Racing",
-        image: "images/game2.jpg",
+        image: "images/game2.png",
         description:
             "Race against skilled opponents, master challenging tracks and become a racing legend."
     },
@@ -25,7 +25,7 @@ const games = [
         id: 3,
         name: "Shadow Quest",
         category: "Adventure",
-        image: "images/game3.jpg",
+        image: "images/game3.png",
         description:
             "Explore mysterious environments, discover hidden secrets and complete exciting quests."
     },
@@ -34,7 +34,7 @@ const games = [
         id: 4,
         name: "Battle Arena",
         category: "Fighting",
-        image: "images/game4.jpg",
+        image: "images/game4.png",
         description:
             "Enter the arena and compete in fast-paced battles against powerful opponents."
     },
@@ -43,7 +43,7 @@ const games = [
         id: 5,
         name: "Galaxy Warriors",
         category: "Space",
-        image: "images/game5.jpg",
+        image: "images/game5.png",
         description:
             "Travel across the galaxy, battle enemy forces and defend the universe from danger."
     },
@@ -52,7 +52,7 @@ const games = [
         id: 6,
         name: "Mystic Worlds",
         category: "Fantasy",
-        image: "images/game6.jpg",
+        image: "images/game6.png",
         description:
             "Explore a magical world filled with mysteries, challenges and unforgettable adventures."
     }
