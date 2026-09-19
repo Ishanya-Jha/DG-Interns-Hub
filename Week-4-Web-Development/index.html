@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GameZone | Gaming Website</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎮 GameZone
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#games">Games</a>
+            <a href="#about">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HOME SECTION
+    ========================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="hero-tag">
+                WELCOME TO GAMEZONE
+            </p>
+
+            <h1>
+                Play. Explore. <span>Have Fun.</span>
+            </h1>
+
+            <p>
+                Discover exciting games and explore a collection
+                of fun gaming experiences.
+            </p>
+
+            <a href="#games" class="hero-button">
+                Explore Games
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GAMES SECTION
+    ========================== -->
+
+    <section id="games" class="games-section">
+
+        <div class="section-heading">
+
+            <p>
+                EXPLORE OUR COLLECTION
+            </p>
+
+            <h2>
+                Featured Games
+            </h2>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search games..."
+                aria-label="Search games"
+            >
+
+        </div>
+
+
+        <!-- GAME CARDS
+             JavaScript will generate them here -->
+
+        <div
+            id="gamesContainer"
+            class="games-container">
+        </div>
+
+
+        <!-- =========================
+             GAME DETAILS
+        ========================== -->
+
+        <div
+            id="gameDetails"
+            class="game-details">
+
+            <p class="details-label">
+                GAME DETAILS
+            </p>
+
+            <h2 id="detailName">
+                Select a game
+            </h2>
+
+            <p id="detailDescription">
+                Click on a game to view its details.
+            </p>
+
+            <p>
+                <strong>Category:</strong>
+
+                <span id="detailCategory">
+                    -
+                </span>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
+
+    <section id="about" class="about-section">
+
+        <h2>
+            About GameZone
+        </h2>
+
+        <p>
+            GameZone is a simple gaming website created using
+            HTML, CSS and JavaScript as part of a Web Development
+            Internship project.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 GameZone | Web Development Internship
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
