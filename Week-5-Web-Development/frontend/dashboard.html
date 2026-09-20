@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SecureAuth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+
+        <div class="nav-brand">
+            🔐 SecureAuth
+        </div>
+
+        <button id="logoutBtn" class="btn btn-danger">
+            Logout
+        </button>
+
+    </nav>
+
+    <main class="dashboard">
+
+        <section class="dashboard-header">
+            <div>
+                <p class="eyebrow">SECURE DASHBOARD</p>
+                <h1>Welcome, <span id="welcomeName">User</span> 👋</h1>
+                <p>Your account information and activity.</p>
+            </div>
+
+            <a
+                href="admin.html"
+                id="adminLink"
+                class="btn hidden"
+            >
+                Admin Panel
+            </a>
+        </section>
+
+        <section class="dashboard-grid">
+
+            <div class="dashboard-card">
+                <div class="card-icon">👤</div>
+                <h2>Profile</h2>
+
+                <div class="profile-item">
+                    <span>Name</span>
+                    <strong id="userName">Loading...</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Email</span>
+                    <strong id="userEmail">Loading...</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Role</span>
+                    <strong id="userRole" class="role-badge">
+                        Loading...
+                    </strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Account Created</span>
+                    <strong id="userCreated">Loading...</strong>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-icon">🛡️</div>
+                <h2>Security</h2>
+
+                <div class="security-item">
+                    <span>Authentication</span>
+                    <strong>JWT Protected</strong>
+                </div>
+
+                <div class="security-item">
+                    <span>Password</span>
+                    <strong>Bcrypt Hashed</strong>
+                </div>
+
+                <div class="security-item">
+                    <span>Route Protection</span>
+                    <strong>Enabled</strong>
+                </div>
+
+                <div class="security-item">
+                    <span>Rate Limiting</span>
+                    <strong>Enabled</strong>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="dashboard-card activity-card">
+            <div class="card-icon">📊</div>
+            <h2>Recent Activity</h2>
+
+            <div class="activity">
+                <span class="activity-dot"></span>
+                <div>
+                    <strong>Account authenticated</strong>
+                    <p>Secure JWT authentication is active.</p>
+                </div>
+            </div>
+
+            <div class="activity">
+                <span class="activity-dot"></span>
+                <div>
+                    <strong>Profile protected</strong>
+                    <p>Your profile is accessible only with valid authentication.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <p id="dashboardMessage" class="message"></p>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

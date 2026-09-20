@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - SecureAuth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="page-center">
+        <section class="auth-card">
+
+            <div class="brand">🔐 SecureAuth</div>
+
+            <h1>Create Account</h1>
+            <p class="subtitle">Create your secure account.</p>
+
+            <form id="signupForm">
+
+                <label for="signupName">Full Name</label>
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Enter your name"
+                    minlength="2"
+                    maxlength="50"
+                    autocomplete="name"
+                    required
+                >
+
+                <label for="signupEmail">Email</label>
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="signupPassword">Password</label>
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Minimum 6 characters"
+                    minlength="6"
+                    autocomplete="new-password"
+                    required
+                >
+
+                <button type="submit" class="btn btn-secondary full-width">
+                    Create Account
+                </button>
+
+            </form>
+
+            <p id="signupMessage" class="message"></p>
+
+            <p class="switch-page">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+
+            <a href="index.html" class="back-link">← Back to Home</a>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

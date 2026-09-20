@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SecureAuth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="page-center">
+        <section class="auth-card">
+
+            <div class="brand">🔐 SecureAuth</div>
+
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Login to access your dashboard.</p>
+
+            <form id="loginForm">
+
+                <label for="loginEmail">Email</label>
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="loginPassword">Password</label>
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button type="submit" class="btn full-width">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="loginMessage" class="message"></p>
+
+            <p class="switch-page">
+                Don't have an account?
+                <a href="signup.html">Create one</a>
+            </p>
+
+            <a href="index.html" class="back-link">← Back to Home</a>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

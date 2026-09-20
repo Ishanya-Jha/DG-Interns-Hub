@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - SecureAuth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+
+        <div class="nav-brand">
+            🔐 SecureAuth Admin
+        </div>
+
+        <div class="nav-actions">
+            <a href="dashboard.html" class="btn btn-outline">
+                Dashboard
+            </a>
+
+            <button id="adminLogoutBtn" class="btn btn-danger">
+                Logout
+            </button>
+        </div>
+
+    </nav>
+
+    <main class="dashboard">
+
+        <section class="dashboard-header">
+            <div>
+                <p class="eyebrow">ADMINISTRATION</p>
+                <h1>User Management</h1>
+                <p>View and manage registered application users.</p>
+            </div>
+
+            <div class="stats-card">
+                <span>Total Users</span>
+                <strong id="userCount">0</strong>
+            </div>
+        </section>
+
+        <section class="dashboard-card">
+
+            <div class="admin-toolbar">
+                <div>
+                    <h2>Registered Users</h2>
+                    <p>Administrator access only.</p>
+                </div>
+
+                <input
+                    type="search"
+                    id="searchUsers"
+                    class="search-input"
+                    placeholder="Search users..."
+                    aria-label="Search users"
+                >
+            </div>
+
+            <div id="usersList" class="users-list">
+                Loading users...
+            </div>
+
+            <p id="adminMessage" class="message"></p>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
