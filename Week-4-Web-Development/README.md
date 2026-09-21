@@ -90,7 +90,7 @@ Week-4-Web-Development/
 
 ## 📸 Project Preview
 
-![Gaming Website](images/game1.png)
+![Gaming Website](images/game_home.png)
 
 ---
 
@@ -102,7 +102,7 @@ Week-4-Web-Development/
 
 ## 📁 GitHub Repository
 
-[View Week 4 Source Code](https://github.com/Ishanya-Jha/DG-Interns-Hub/tree/main/Week-4-Web-Development)
+[View Week 4 Source Code](https://github.com/Ishanya-Jha/DG-Interns-Hub/tree/main/Week-4-Web-Development/index.html)
 
 ---
 
