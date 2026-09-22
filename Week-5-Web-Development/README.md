@@ -297,7 +297,7 @@ in your browser.
 
 ### User Login
 
-![User Login](images/login.png)
+![User Login](images/login-copy.png)
 
 ### User Dashboard
 
