@@ -1,32 +1,64 @@
-# 🔐 SecureAuth Dashboard
+# SecureAccess – Secure Full-Stack Authentication System & Admin Dashboard
 
-A secure full-stack authentication system and admin dashboard built as part of the **Week 5 Web Development Internship** at **DG Interns Hub**.
+## 📌 Project Overview
 
-The project implements user authentication, JWT-based authorization, role-based access control, password hashing, protected routes, input validation, rate limiting, and MongoDB database integration.
+**SecureAccess** is a secure full-stack web application developed as part of my **Week 5 Web Development Internship at DG Interns Hub**.
 
----
-
-## 🎯 Project Objective
-
-The objective of this project is to build a secure full-stack web application with:
-
-* User Signup
-* User Login
-* User Logout
-* Password hashing using bcrypt
-* JWT authentication
-* Protected routes
-* Role-based access control
-* User profile dashboard
-* Admin dashboard
-* User search
-* Admin user deletion
-* MongoDB database integration
-* Basic security mechanisms
+The project demonstrates user registration, authentication, authorization, secure password handling, MongoDB database integration, protected routes, role-based access control, and administrative user management.
 
 ---
 
-## 🛠️ Tech Stack
+## 👨‍💻 Internship Details
+
+* **Intern Name:** Ishanya Jha
+* **Intern ID:** DG/AUGUST/WEB/037
+* **Batch:** 1
+* **Week:** 5
+* **Project:** SecureAccess
+* **Category:** Web Development
+
+---
+
+## 🚀 Features
+
+### 👤 User Features
+
+* User registration
+* User login
+* Secure password hashing
+* JWT-based authentication
+* Protected user dashboard
+* User profile information
+* Recent activity display
+* User logout
+
+### 🛡️ Security Features
+
+* Password hashing using **bcrypt**
+* JWT-based authentication
+* Protected API routes
+* Role-based authorization
+* Admin-only routes
+* Authentication rate limiting
+* Input validation
+* Secure password storage
+* Helmet security middleware
+* CORS configuration
+* Password hash excluded from API responses
+
+### 👑 Admin Features
+
+* Admin authentication
+* View registered users
+* Search users
+* View user roles
+* Update user roles through the database
+* Delete user accounts
+* Confirmation before deleting users
+
+---
+
+## 🛠️ Technologies Used
 
 ### Frontend
 
@@ -41,22 +73,20 @@ The objective of this project is to build a secure full-stack web application wi
 
 ### Database
 
-* MongoDB Atlas
+* MongoDB
 * Mongoose
 
-### Security
+### Authentication & Security
 
-* bcryptjs
 * JSON Web Token (JWT)
+* bcryptjs
 * Helmet
 * Express Rate Limit
-* Input Validation
-* Protected API Routes
-* XSS-safe DOM Rendering
+* CORS
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```text
 Week-5-Web-Development/
@@ -105,195 +135,56 @@ Week-5-Web-Development/
 └── README.md
 ```
 
-> **Note:** The `.env` file is excluded from GitHub because it contains sensitive credentials and secrets.
-
 ---
 
-## 🔑 Authentication System
+## 🔐 Authentication Workflow
 
-### Signup
-
-Users can create an account using:
-
-* Name
-* Email
-* Password
-
-The backend validates the submitted information before creating the account.
-
-Passwords are hashed using **bcryptjs** before being stored in MongoDB.
-
-### Login
-
-Users log in using their registered email and password.
-
-The backend:
-
-1. Finds the user in MongoDB.
-2. Compares the entered password with the stored bcrypt hash.
-3. Generates a JWT token.
-4. Returns the authenticated user's information.
-
-The frontend stores the JWT token and uses it to access protected API endpoints.
-
-### Logout
-
-Logout removes the stored authentication information from the browser and redirects the user to the login page.
-
----
-
-## 👥 Role-Based Access Control
-
-The application supports two roles:
-
-### 👤 User
-
-Regular users can:
-
-* Login
-* View their own profile
-* Access their dashboard
-* Logout
-
-### 🛠️ Admin
-
-Administrators can:
-
-* Login
-* View their dashboard
-* View all registered users
-* Search users
-* Delete users
-* Access admin-only API endpoints
-
-Admin authorization is handled using JWT role information and middleware.
-
----
-
-## 📊 Dashboard
-
-After successful login, users are redirected to the dashboard.
-
-The dashboard displays:
-
-* User name
-* Email
-* Role
-* Account information
-* Activity information
-
-Administrators also have access to the Admin Dashboard.
-
----
-
-## 🛡️ Security Features
-
-### 1. Password Hashing
-
-Passwords are hashed using `bcryptjs` before being stored in MongoDB.
-
-```javascript
-const passwordHash = await bcrypt.hash(password, 10);
-```
-
-The original password is never stored in the database.
-
-### 2. JWT Authentication
-
-JSON Web Tokens are used to authenticate users.
-
-```javascript
-const token = jwt.sign(
-    {
-        userId: user._id,
-        role: user.role
-    },
-    process.env.JWT_SECRET,
-    {
-        expiresIn: "1h"
-    }
-);
-```
-
-Protected API requests require a valid JWT.
-
-### 3. Protected Routes
-
-Protected routes verify the JWT before allowing access.
-
-Example:
+The application follows this basic authentication flow:
 
 ```text
-GET /api/users/profile
+User
+  ↓
+Signup
+  ↓
+Backend Validation
+  ↓
+Password Hashing with bcrypt
+  ↓
+MongoDB
+  ↓
+Login
+  ↓
+Credential Verification
+  ↓
+JWT Generation
+  ↓
+Protected Dashboard
 ```
 
-Without a valid token, the server returns an authentication error.
-
-### 4. Role-Based Authorization
-
-Admin routes require both authentication and the `admin` role.
+For administrator accounts:
 
 ```text
-GET /api/users/admin/users
-DELETE /api/users/admin/users/:id
-```
-
-Regular users cannot access these endpoints.
-
-### 5. Input Validation
-
-The backend validates:
-
-* Required fields
-* Name length
-* Password length
-* Existing email addresses
-
-Invalid requests are rejected before database operations are performed.
-
-### 6. XSS Protection
-
-User-generated data is rendered using safe DOM methods such as `textContent` instead of directly injecting HTML.
-
-This helps prevent malicious HTML or JavaScript from being interpreted as executable content.
-
-### 7. Rate Limiting
-
-Authentication routes use `express-rate-limit`.
-
-The application limits repeated authentication attempts within a defined time window.
-
-This helps reduce basic brute-force attempts.
-
-### 8. Helmet
-
-The Express application uses Helmet to add security-related HTTP headers.
-
-```javascript
-app.use(helmet());
+Admin Login
+     ↓
+JWT Verification
+     ↓
+Role Verification
+     ↓
+Admin Dashboard
+     ↓
+User Management
 ```
 
 ---
 
 ## 🗄️ Database
 
-The project uses **MongoDB Atlas** as the database.
+The application uses **MongoDB** to store user information.
 
-### Database
-
-```text
-secureauth_db
-```
-
-### Collection
+Each user document contains fields such as:
 
 ```text
-users
-```
-
-Each user document contains:
-
-```text
+_id
 name
 email
 passwordHash
@@ -302,65 +193,47 @@ createdAt
 updatedAt
 ```
 
-Example:
+Passwords are stored as bcrypt hashes instead of plain-text passwords.
 
-```json
-{
-    "name": "Test User",
-    "email": "testuser@example.com",
-    "passwordHash": "bcrypt-hashed-password",
-    "role": "user"
-}
-```
-
-The original password is never stored.
+The application uses the `role` field to distinguish between normal users and administrators.
 
 ---
 
-## 🔌 API Endpoints
+## 🔒 Security Implementation
 
-### Authentication
+SecureAccess implements multiple security mechanisms:
 
-| Method | Endpoint           | Description          |
-| ------ | ------------------ | -------------------- |
-| POST   | `/api/auth/signup` | Create a new account |
-| POST   | `/api/auth/login`  | Login user           |
+### Password Hashing
 
-### User
+User passwords are hashed using **bcryptjs** before being stored in MongoDB.
 
-| Method | Endpoint                     | Access              |
-| ------ | ---------------------------- | ------------------- |
-| GET    | `/api/users/profile`         | Authenticated users |
-| GET    | `/api/users/admin/users`     | Admin only          |
-| DELETE | `/api/users/admin/users/:id` | Admin only          |
+### JWT Authentication
 
----
+After successful login, the backend generates a JSON Web Token containing the authenticated user's identity and role.
 
-## 📸 Screenshots
+### Protected Routes
 
-### 1. Signup Page
+Authentication middleware verifies the JWT before allowing access to protected resources.
 
-![SecureAuth Signup Page](images/signup.png)
+### Role-Based Authorization
 
-### 2. Login Page
+Administrative routes verify that the authenticated user has the required `admin` role.
 
-![SecureAuth Login Page](images/login.png)
+### Rate Limiting
 
-### 3. User Dashboard
+Authentication endpoints use rate limiting to restrict repeated login and signup attempts.
 
-![SecureAuth User Dashboard](images/dashboard.png)
+### Security Headers
 
-### 4. Admin Dashboard
+Helmet is used to add security-related HTTP headers.
 
-![SecureAuth Admin Dashboard](images/admin-dashboard.png)
+### XSS Protection
 
-### 5. MongoDB Users Collection
-
-![MongoDB Users Collection](images/mongodb-users.png)
+Frontend user-generated values are rendered using safe DOM methods such as `textContent` instead of directly inserting untrusted HTML.
 
 ---
 
-## ⚙️ Installation and Setup
+## ▶️ Running the Project Locally
 
 ### 1. Clone the Repository
 
@@ -368,30 +241,29 @@ The original password is never stored.
 git clone https://github.com/Ishanya-Jha/DG-Interns-Hub.git
 ```
 
-### 2. Navigate to the Project
+### 2. Open the Week 5 Backend
 
 ```bash
-cd DG-Interns-Hub/Week-5-Web-Development
+cd DG-Interns-Hub/Week-5-Web-Development/backend
 ```
 
-### 3. Install Backend Dependencies
+### 3. Install Dependencies
 
 ```bash
-cd backend
 npm install
 ```
 
-### 4. Create `.env`
+### 4. Configure Environment Variables
 
-Inside the `backend` folder, create a `.env` file:
+Create a `.env` file inside the `backend` folder:
 
 ```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
+MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+PORT=5000
 ```
 
-> **Warning:** Never upload the `.env` file to GitHub.
+**Never upload the `.env` file to GitHub.**
 
 ### 5. Start the Backend
 
@@ -417,129 +289,68 @@ in your browser.
 
 ---
 
-## 🧪 Testing
+## 📸 Project Screenshots
 
-The following functionality was tested during development:
+### User Signup
 
-* User signup
-* Duplicate email validation
-* Password validation
-* Password hashing
-* User login
-* JWT generation
-* Protected profile route
-* Invalid token handling
-* Admin authorization
-* Admin user listing
-* User search
-* Admin user deletion
-* Logout
-* MongoDB data storage
-* Rate limiting
-* Frontend dashboard navigation
+![User Signup](images/signup.png)
 
----
+### User Login
 
-## 🔄 Authentication Flow
+![User Login](images/login.png)
 
-```text
-User
-  │
-  ▼
-Signup
-  │
-  ▼
-Input Validation
-  │
-  ▼
-Password Hashing
-  │
-  ▼
-MongoDB
-  │
-  ▼
-Login
-  │
-  ▼
-Password Verification
-  │
-  ▼
-JWT Token
-  │
-  ▼
-Protected Dashboard
-  │
-  ├── User → Own Profile
-  │
-  └── Admin → All Users + Delete Users
-```
+### User Dashboard
+
+![User Dashboard](images/dashboard.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](images/admin-dashboard.png)
+
+### MongoDB Users Collection
+
+![MongoDB Users](images/mongodb-users.png)
 
 ---
 
-## 🎓 Learning Outcomes
+## 🎯 Learning Outcomes
 
-Through this project, I gained practical experience with:
+Through this project, I strengthened my understanding of:
 
 * Full-stack web application development
-* REST API development
-* Node.js and Express.js
-* MongoDB and Mongoose
-* JWT authentication
-* Password hashing
-* Middleware
-* Role-based authorization
-* API security
-* Input validation
-* Rate limiting
 * Frontend and backend integration
-* Git and GitHub
-* Debugging authentication systems
-
----
-
-## 👨‍💻 Internship Information
-
-| Detail       | Information                     |
-| ------------ | ------------------------------- |
-| Internship   | Web Development Internship      |
-| Organization | DG Interns Hub                  |
-| Batch        | 1 August                        |
-| Task         | Week 5 Advanced Web Application |
-| Project      | SecureAuth Dashboard            |
-
----
-
-## 🔒 Security Notice
-
-Sensitive information such as:
-
-* MongoDB connection strings
-* Database passwords
-* JWT secrets
-* User passwords
-* API credentials
-
-must never be committed to the repository.
-
-The `.env` file is excluded using `.gitignore`.
-
----
-
-## 📌 Project Status
-
-**Status: ✅ Completed**
-
-The SecureAuth Dashboard successfully implements:
-
-* Authentication
-* Authorization
-* JWT security
+* REST API development
+* User authentication
+* JWT-based authorization
 * Password hashing
-* Protected routes
+* MongoDB database operations
+* Express middleware
 * Role-based access control
-* MongoDB integration
-* User dashboard
-* Admin dashboard
-* User search
-* Admin user deletion
-* Basic security features
+* Web application security
+* Admin dashboard development
+* CRUD operations
+
+---
+
+## 📚 Internship
+
+This project was completed as part of the **Web Development Internship at DG Interns Hub, Batch 1**.
+
+The project helped me apply concepts from frontend development, backend development, database management, authentication, and web security in a practical application.
+
+---
+
+## 🔗 Repository
+
+**GitHub Repository:**
+
+https://github.com/Ishanya-Jha/DG-Interns-Hub/tree/main/Week-5-Web-Development
+
+---
+
+## 👩‍💻 Developer
+
+**Ishanya Jha**
+
+Web Development Intern
+DG Interns Hub – Batch 1
