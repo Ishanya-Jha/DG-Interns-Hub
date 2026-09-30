@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+}
+
+.container,
+.form-container {
+    width: 90%;
+    max-width: 420px;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+h1,
+h2 {
+    margin-bottom: 15px;
+}
+
+p {
+    margin: 15px 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+a,
+button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #38bdf8;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+input {
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+button {
+    font-size: 15px;
+}
+
+.success {
+    color: #4ade80;
+    font-weight: bold;
+}
+
+.error {
+    color: #f87171;
+    font-weight: bold;
+}
+
+#logoutBtn {
+    margin-top: 15px;
+}
