@@ -1,0 +1,544 @@
+{
+  "info": {
+    "name": "JobConnect Week 8 API",
+    "description": "Postman collection for the Week 8 backend extension to the Week 7 JobConnect app.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/v1"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "jobId",
+      "value": ""
+    },
+    {
+      "key": "applicationId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Register candidate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/auth/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "register"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Asha Sharma\",\n  \"email\": \"asha@example.com\",\n  \"password\": \"Password123\",\n  \"role\": \"candidate\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Register recruiter",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/auth/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "register"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ravi Recruiter\",\n  \"email\": \"ravi@example.com\",\n  \"password\": \"Password123\",\n  \"role\": \"recruiter\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"asha@example.com\",\n  \"password\": \"Password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Current user",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/auth/me",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "me"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/auth/logout",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "logout"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/users/profile",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "profile"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update profile",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/users/profile",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "profile"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"Raipur\",\n  \"bio\": \"MCA student\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List jobs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/jobs?page=1&limit=10&sort=newest",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "jobs?page=1&limit=10&sort=newest"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search jobs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/jobs?search=React&location=Remote",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "jobs?search=React&location=Remote"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter internships",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/jobs?type=Internship&workMode=Remote&skill=JavaScript",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "jobs?type=Internship&workMode=Remote&skill=JavaScript"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get job",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/jobs/{{jobId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "jobs",
+            "{{jobId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create job",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/jobs",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "jobs"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Frontend Developer Intern\",\n  \"company\": \"Example Labs\",\n  \"location\": \"Remote\",\n  \"type\": \"Internship\",\n  \"workMode\": \"Remote\",\n  \"description\": \"Build React interfaces and work with APIs.\",\n  \"skills\": [\n    \"React\",\n    \"JavaScript\",\n    \"CSS\"\n  ],\n  \"salary\": \"\\u20b910,000/month\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update job",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/jobs/{{jobId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "jobs",
+            "{{jobId}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"salary\": \"\\u20b912,000/month\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Archive job",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/jobs/{{jobId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "jobs",
+            "{{jobId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Apply to job",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/applications",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "applications"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobId\": \"{{jobId}}\",\n  \"coverLetter\": \"I am interested in this internship.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "My applications",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/applications/my",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "applications",
+            "my"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get application",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/applications/{{applicationId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "applications",
+            "{{applicationId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update application status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/applications/{{applicationId}}/status",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "applications",
+            "{{applicationId}}",
+            "status"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Shortlisted\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Withdraw application",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/applications/{{applicationId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "applications",
+            "{{applicationId}}"
+          ]
+        }
+      }
+    }
+  ]
+}
