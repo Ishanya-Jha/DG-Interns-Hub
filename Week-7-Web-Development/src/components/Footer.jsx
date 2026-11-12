@@ -25,7 +25,7 @@ export default function Footer() {
           <Link to="/jobs">Browse opportunities <ArrowUpRight size={15} /></Link>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} DG Interns Hub. Website project demo.</span>
+          <span>© {new Date().getFullYear()} 2026 Ishanya Jha | Intern @ DG Interns Hub. All rights reserved.</span>
           <span>Built with React</span>
         </div>
       </div>
